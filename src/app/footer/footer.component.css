@@ -1,0 +1,58 @@
+.footer {
+    background: linear-gradient(to right, #1E427E, #12284C);
+    color: white;
+    padding: 30px 20px;
+    font-size: 16px; 
+    line-height: 1.6;
+}
+
+.footer-content {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 20px;
+    margin-bottom: 20px; 
+}
+
+
+
+.footer-content h3 {
+    margin-top: 0;
+    margin-bottom: 10px;
+    font-size: 20px;
+    font-weight: 900;
+    color: white;
+    border-bottom: 3px solid;
+    border-image: linear-gradient(to right, #FF731D, #E65C00); 
+    border-image-slice: 1; 
+    padding-bottom: 5px;
+    display: inline-block;
+    width: auto; 
+}
+
+
+
+.footer-content p {
+   font-weight: 300;
+    margin-bottom: 15px;
+    line-height: 1.8;
+}
+
+.complaint-number {
+    font-weight: bold;
+    color: #f8f9fa; 
+}
+
+.copyright {
+    text-align: center;
+    font-size: 14px;
+    color: #eee;
+    padding-top: 15px;
+    border-top: 1px solid rgba(255, 255, 255, 0.1); 
+}
+
+
+@media (min-width: 768px) {
+    .footer-content {
+        grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    }
+}

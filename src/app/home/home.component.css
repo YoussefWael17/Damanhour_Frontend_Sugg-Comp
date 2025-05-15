@@ -1,0 +1,46 @@
+body {
+    background-color: #f4f4f4;
+    font-family: 'Cairo', sans-serif;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+    color: #333;
+}
+
+.welcome-section {
+    flex-grow: 1; 
+    display: flex;
+    flex-direction: column; 
+    justify-content: center; 
+    align-items: center; 
+    text-align: center;
+    padding: 0; 
+    background-image: url('/edwin-andrade-4V1dC_eoCwg-unsplash.jpg');
+    background-size: cover; 
+    background-position: center;
+    background-repeat: no-repeat;
+    color: white; 
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5); 
+    min-height: 400px;
+}
+
+.welcome-section > div {
+    padding: 150px; 
+    border-radius: 10px; 
+}
+
+.welcome-section h1 {
+    font-size: 52px;
+    color: inherit;
+    margin-bottom: 5px;
+    font-weight: 900;
+}
+
+.welcome-section p {
+    font-size: 20px;
+    color: inherit;
+    line-height: 1.6;
+    margin-bottom: 230px;
+}

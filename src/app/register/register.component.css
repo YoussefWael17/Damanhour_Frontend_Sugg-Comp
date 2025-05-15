@@ -1,0 +1,248 @@
+/* Heading */
+.main-heading {
+    text-align: center;
+    padding-top: 60px; /* زودنا المسافة من الناف بار */
+    padding-bottom: 0;
+}
+
+.main-heading h1 {
+    font-size: 48px;
+    color: #111;
+    font-weight: bold;
+    margin-bottom: 35px;
+}
+
+/* Section */
+.section .container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 20px;
+}
+
+.section .content {
+    display: flex;
+    flex-wrap: wrap;
+    width: 100%;
+}
+
+.section .text {
+    font-size: 20px;
+    line-height: 1.8;
+    color: #333;
+    text-align: right;
+    position: relative;
+}
+
+.section .text h1 {
+    color: #000;
+    font-size: 30px;
+    font-weight: bold;
+    margin-bottom: 10px;
+}
+
+.section .text::after {
+    content: "";
+    position: absolute;
+    top: 0;
+    right: -15px;
+    width: 6px;
+    height: 85%;
+    background-color: #FF731D;
+    border-radius: 2px;
+}
+
+/* Form */
+.complaint-form {
+    max-width: 900px; /* زودنا العرض الأقصى */
+    margin: 60px auto; /* زودنا المسافة من العنوان والفوتر ووسّطنا أفقياً */
+    padding: 30px;
+    background-color: #fff; /* خلفية أفتح للفورم */
+    border-radius: 12px;
+    box-shadow: 0 0 15px rgba(0, 0, 0, 0.1);
+    border: 1px solid #ddd; /* بوردر بسيط للفورم */
+}
+
+.complaint-form form {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.complaint-form label {
+    font-weight: 600;
+    color: #1E427E;
+    transition: all 0.3s ease;
+    cursor: pointer;
+}
+
+.complaint-form label:hover {
+    color: #163366;
+    transform: scale(1.03);
+    font-weight: bold;
+}
+
+.complaint-form input,
+.complaint-form select,
+.complaint-form textarea {
+    padding: 15px;
+    border: 2px solid #ccc;
+    border-radius: 8px;
+    font-size: 18px;
+    font-family: "Cairo", sans-serif;
+    transition: all 0.3s ease;
+}
+
+.complaint-form input:focus,
+.complaint-form select:focus,
+.complaint-form textarea:focus {
+    outline: none;
+    border-image: linear-gradient(90deg, #FF731D, #1E427E) 1;
+}
+
+.complaint-form textarea {
+    resize: vertical;
+    min-height: 100px;
+}
+
+.password-input-wrapper {
+    position: relative; /* عشان نقدر نعمل position للأيقونة جواه */
+    display: flex; /* عشان نرتب العناصر جنب بعض */
+    flex-direction: column; /* نرجع الليبل فوق الحقل */
+}
+
+.password-input-wrapper input[type="password"],
+.password-input-wrapper input[type="text"] { /* هنطبق نفس التنسيق لو غيرنا نوع الإدخال بالـ JS */
+    padding-right: 40px; /* مساحة عشان الأيقونة */
+}
+
+.password-toggle {
+    position: absolute;
+    top: 50%;
+    left: 10px; /* تعديل مكان الأيقونة حسب اتجاه النص */
+    transform: translateY(-50%);
+    cursor: pointer;
+    color: #777;
+}
+
+/* لو النص بالإنجليزي هيكون مكان الأيقونة على اليمين */
+html[dir="ltr"] .password-toggle {
+    right: 10px;
+    left: auto;
+}
+
+.complaint-form button {
+    background: linear-gradient(to right, #1E427E, #12284C);
+    color: white;
+    padding: 28px 40px;
+    border: none;
+    border-radius: 8px;
+    font-size: 20px;
+    font-weight: bold;
+    transition: all 0.4s ease;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15);
+    cursor: pointer;
+}
+
+.complaint-form button:hover {
+    background: linear-gradient(to right, #FF731D, #1E427E);
+    transform: translateY(-5px);
+    box-shadow: 0 6px 14px rgba(0, 0, 0, 0.2);
+}
+
+.form-message {
+    text-align: center;
+    margin-top: 20px;
+    padding: 10px;
+    background-color: #d4edda; /* لون أخضر فاتح للرسالة */
+    color: #155724; /* لون أخضر غامق للنص */
+    font-size: 16px;
+    font-weight: bold;
+    border-radius: 5px;
+    border: 1px solid #c3e6cb;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+    max-width: 600px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+/* سجل الشكاوى (هنغير اسمه لـ تسجيل الدخول) */
+
+.log-button {
+    background: linear-gradient(to right, #1E427E, #FF731D); /* تدرج بين الأزرق الأساسي والبرتقالي */
+    color: white;
+    padding: 20px 33px;
+    border: none;
+    border-radius: 8px;
+    font-size: 20px;
+    font-weight: bold;
+    text-decoration: none;
+    transition: all 0.3s ease;
+    display: inline-block;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15);
+    margin-top: 30px;
+}
+
+.log-button:hover {
+    background: linear-gradient(to right, #12284C, #E65C00); /* تدرج أغمق عند التحويم */
+    transform: translateY(-2px);
+    box-shadow: 0 6px 14px rgba(0, 0, 0, 0.2);
+}
+
+/* Checkbox Wrapper */
+.checkbox-wrapper {
+    margin: 15px 0;
+    font-size: 16px;
+    color: #555;
+    display: flex;
+    align-items: center;
+}
+
+.checkbox-wrapper input[type="checkbox"] {
+    margin-left: 10px;
+    transform: scale(1.2);
+}
+
+.checkbox-wrapper a {
+    color: #007bff;
+    text-decoration: underline;
+}
+
+/* Responsive */
+@media (max-width: 1209px) {
+    .main-heading h1 {
+        font-size: 38px;
+    }
+
+    .section .text h1 {
+        font-size: 32px;
+    }
+}
+
+@media (max-width: 768px) {
+    .main-heading h1 {
+        font-size: 30px;
+    }
+
+    .section .text h1 {
+        font-size: 28px;
+    }
+
+    .container {
+        padding: 0 15px;
+    }
+
+    .complaint-form {
+        padding: 20px;
+    }
+
+    .complaint-form button {
+        padding: 15px 25px;
+        font-size: 18px;
+    }
+
+    .log-button {
+        padding: 15px 25px;
+        font-size: 18px;
+    }
+}
