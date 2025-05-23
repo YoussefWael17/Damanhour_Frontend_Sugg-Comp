@@ -17,7 +17,7 @@ export const routes: Routes = [
     children: [
       { path: '', component: HomeComponent },
       { path: 'submit-complaint', component: SubmitComplaintComponent },
-      { path: 'profile', component: ProfileComponent}
+      { path: 'profile', component: ProfileComponent }
     ]
   },
   { path: 'register', component: RegisterComponent },
@@ -26,3 +26,4 @@ export const routes: Routes = [
   { path: 'check-complaint-status', component: CheckComplaintStatusComponent },
   { path: 'complaints-log', component: ComplaintsLogComponent }
 ];
+
