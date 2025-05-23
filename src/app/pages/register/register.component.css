@@ -1,7 +1,8 @@
 /* Heading */
 .main-heading {
     text-align: center;
-    padding-top: 60px; /* زودنا المسافة من الناف بار */
+    padding-top: 60px;
+    /* زودنا المسافة من الناف بار */
     padding-bottom: 0;
 }
 
@@ -54,13 +55,17 @@
 
 /* Form */
 .complaint-form {
-    max-width: 900px; /* زودنا العرض الأقصى */
-    margin: 60px auto; /* زودنا المسافة من العنوان والفوتر ووسّطنا أفقياً */
+    max-width: 900px;
+    /* زودنا العرض الأقصى */
+    margin: 60px auto;
+    /* زودنا المسافة من العنوان والفوتر ووسّطنا أفقياً */
     padding: 30px;
-    background-color: #fff; /* خلفية أفتح للفورم */
+    background-color: #fff;
+    /* خلفية أفتح للفورم */
     border-radius: 12px;
     box-shadow: 0 0 15px rgba(0, 0, 0, 0.1);
-    border: 1px solid #ddd; /* بوردر بسيط للفورم */
+    border: 1px solid #ddd;
+    /* بوردر بسيط للفورم */
 }
 
 .complaint-form form {
@@ -106,20 +111,26 @@
 }
 
 .password-input-wrapper {
-    position: relative; /* عشان نقدر نعمل position للأيقونة جواه */
-    display: flex; /* عشان نرتب العناصر جنب بعض */
-    flex-direction: column; /* نرجع الليبل فوق الحقل */
+    position: relative;
+    /* عشان نقدر نعمل position للأيقونة جواه */
+    display: flex;
+    /* عشان نرتب العناصر جنب بعض */
+    flex-direction: column;
+    /* نرجع الليبل فوق الحقل */
 }
 
 .password-input-wrapper input[type="password"],
-.password-input-wrapper input[type="text"] { /* هنطبق نفس التنسيق لو غيرنا نوع الإدخال بالـ JS */
-    padding-right: 40px; /* مساحة عشان الأيقونة */
+.password-input-wrapper input[type="text"] {
+    /* هنطبق نفس التنسيق لو غيرنا نوع الإدخال بالـ JS */
+    padding-right: 40px;
+    /* مساحة عشان الأيقونة */
 }
 
 .password-toggle {
     position: absolute;
     top: 50%;
-    left: 10px; /* تعديل مكان الأيقونة حسب اتجاه النص */
+    left: 10px;
+    /* تعديل مكان الأيقونة حسب اتجاه النص */
     transform: translateY(-50%);
     cursor: pointer;
     color: #777;
@@ -154,8 +165,10 @@ html[dir="ltr"] .password-toggle {
     text-align: center;
     margin-top: 20px;
     padding: 10px;
-    background-color: #d4edda; /* لون أخضر فاتح للرسالة */
-    color: #155724; /* لون أخضر غامق للنص */
+    background-color: #d4edda;
+    /* لون أخضر فاتح للرسالة */
+    color: #155724;
+    /* لون أخضر غامق للنص */
     font-size: 16px;
     font-weight: bold;
     border-radius: 5px;
@@ -169,7 +182,8 @@ html[dir="ltr"] .password-toggle {
 /* سجل الشكاوى (هنغير اسمه لـ تسجيل الدخول) */
 
 .log-button {
-    background: linear-gradient(to right, #1E427E, #FF731D); /* تدرج بين الأزرق الأساسي والبرتقالي */
+    background: linear-gradient(to right, #1E427E, #FF731D);
+    /* تدرج بين الأزرق الأساسي والبرتقالي */
     color: white;
     padding: 20px 33px;
     border: none;
@@ -184,7 +198,8 @@ html[dir="ltr"] .password-toggle {
 }
 
 .log-button:hover {
-    background: linear-gradient(to right, #12284C, #E65C00); /* تدرج أغمق عند التحويم */
+    background: linear-gradient(to right, #12284C, #E65C00);
+    /* تدرج أغمق عند التحويم */
     transform: translateY(-2px);
     box-shadow: 0 6px 14px rgba(0, 0, 0, 0.2);
 }
@@ -248,29 +263,30 @@ html[dir="ltr"] .password-toggle {
 }
 
 .password-input-wrapper {
-  position: relative;
-  margin-bottom: 1em;
-  background-color: #fff;
+    position: relative;
+    margin-bottom: 1em;
+    background-color: #fff;
 }
 
 .password-input-wrapper input {
-  width: 100%;
-  padding-right: 40px; /* مساحة للأيقونة */
-  box-sizing: border-box;
+    width: 100%;
+    padding-right: 40px;
+    /* مساحة للأيقونة */
+    box-sizing: border-box;
 }
 
 .password-input-wrapper i {
-  position: absolute;
-  top: 62%;
-  left: 25px;
-  transform: translateY(-50%);
-  cursor: pointer;
-  color: #666;
+    position: absolute;
+    top: 62%;
+    left: 25px;
+    transform: translateY(-50%);
+    cursor: pointer;
+    color: #666;
 }
 
 .error-message {
-  color: red;
-  font-size: 14px;
-  margin-top: -10px;
-  margin-bottom: 10px;
+    color: red;
+    font-size: 14px;
+    margin-top: -10px;
+    margin-bottom: 10px;
 }
