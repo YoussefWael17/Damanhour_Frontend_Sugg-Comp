@@ -1,0 +1,52 @@
+.welcome-section {
+    position: relative;
+    z-index: 1;
+    display: flex;
+    flex-direction: column; /* عشان نرتب العنوان والفقرة فوق بعض */
+    justify-content: center; /* توسيط رأسي للمحتوى */
+    align-items: center; /* توسيط أفقي للمحتوى */
+    text-align: center;
+    padding: 0; /* هنشيل البادينج عشان المحتوى ياخد كل المساحة */
+    background-image: url('/edwin-andrade-4V1dC_eoCwg-unsplash.jpg'); /* استبدل ده بمسار صورتك */
+    background-size: cover; /* عشان الصورة تغطي كل المساحة */
+    background-position: center; /* عشان الصورة تكون متوسّطة */
+    background-repeat: no-repeat; /* عشان الصورة متتكررش */
+    color: white; /* عشان النص يكون واضح على الخلفية */
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5); /* إضافة ظل بسيط للنص */
+    min-height: 400px; /* ممكن تحدد ارتفاع مبدئي لو الصورة مش بتملأ الشاشة في البداية */
+}
+
+.welcome-section > div {
+    /* ممكن نضيف خلفية شفافة هنا لو الكلام مش واضح على الصورة */
+    /* background-color: rgba(0, 0, 0, 0.3); */
+    padding: 150px; /* نضيف بادينج بسيط للكلام عشان ميكونش لازق في الأطراف */
+    border-radius: 10px; /* شكل جمالي بسيط للخلفية لو استخدمناها */
+}
+
+.welcome-section h1 {
+    font-size: 48px;
+    color: inherit;
+    margin-bottom: 20px;
+}
+
+.welcome-section p {
+    font-size: 20px;
+    color: inherit;
+    line-height: 1.6;
+    margin-bottom: 230px;
+}
+
+@media (max-width: 768px) {
+  .welcome-section > div {
+    padding: 50px;
+  }
+
+  .welcome-section h1 {
+    font-size: 32px;
+  }
+
+  .welcome-section p {
+    font-size: 16px;
+    margin-bottom: 100px;
+  }
+}

@@ -1,0 +1,107 @@
+<div class="main-heading">
+  <h1>استمارة تسجيل حساب جديد</h1>
+</div>
+
+<div class="section">
+  <div class="container">
+    <div class="content">
+      <div class="text">
+        <h1>يرجى إدخال البيانات التالية لإنشاء حساب</h1>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="complaint-form">
+  <form (ngSubmit)="onSubmit(registerForm)" #registerForm="ngForm">
+    <label for="full-name">الاسم الكامل</label>
+    <input type="text" id="full-name" name="full_name" placeholder="ادخل الاسم ثلاثي" ngModel required />
+
+    <label for="national-id">الرقم القومي</label>
+<input
+  type="text"
+  id="national-id"
+  name="national_id"
+  placeholder="ادخل الرقم القومي"
+  ngModel
+  required
+  pattern="[0-9]{14}"
+  maxlength="14"
+  inputmode="numeric"
+  (keypress)="allowOnlyNumbers($event)"
+/>
+<div *ngIf="registerForm.submitted && registerForm.controls['national_id']?.invalid" class="error-message">
+  الرقم القومي يجب أن يتكون من 14 رقمًا.
+</div>
+
+    <label for="email">البريد الإلكتروني</label>
+    <input type="email" id="email" name="email" placeholder="ادخل البريد الالكتروني" ngModel required />
+
+    <label for="phone">رقم الهاتف</label>
+    <input
+      type="tel"
+      id="phone"
+      name="phone"
+      placeholder="ادخل رقم الهاتف"
+      ngModel
+      required
+      pattern="[0-9]{11}"
+      maxlength="11"
+      inputmode="numeric"
+      (keypress)="allowOnlyNumbers($event)"
+    />
+
+    <div class="password-input-wrapper">
+  <label for="password">كلمة المرور</label>
+  <input [type]="showPassword ? 'text' : 'password'" id="password" name="password" ngModel required aria-required="true" />
+  <i
+    class="fa password-toggle"
+    [ngClass]="showPassword ? 'fa-eye' : 'fa-eye-slash'"
+    (click)="togglePassword()"
+    aria-label="Toggle Password Visibility"
+    role="button"
+    tabindex="0"
+    (keydown.enter)="togglePassword()"
+  ></i>
+</div>
+
+
+    <label for="role">الصفة</label>
+    <select id="role" name="role" ngModel required>
+      <option value="" disabled selected>اختر الصفة</option>
+      <option value="student">طالب</option>
+      <option value="faculty_member">عضو هيئة تدريس</option>
+      <option value="government_employee">موظف حكومي</option>
+      <option value="other">أخرى</option>
+    </select>
+
+    <label for="college">الكلية</label>
+    <select id="college" name="college" ngModel required>
+      <option value="" disabled selected>اختر الكلية</option>
+      <option value="arts">كلية الآداب</option>
+      <option value="science">كلية العلوم</option>
+      <option value="engineering">كلية الهندسة</option>
+      <option value="medicine">كلية الطب</option>
+    </select>
+
+    <div class="checkbox-wrapper">
+  <label>
+    <input type="checkbox" name="terms" ngModel required />
+    أوافق على <a href="#">سياسة الاستخدام</a> وأتعهد بتقديم بيانات صحيحة.
+  </label>
+  <div *ngIf="registerForm.submitted && registerForm.controls['terms']?.invalid" class="error-message">
+    يجب الموافقة على سياسة الاستخدام.
+  </div>
+</div>
+
+    <button type="submit" [disabled]="!registerForm.valid">تسجيل الحساب</button>
+  </form>
+
+  <div class="form-message">
+    تأكد من إدخال جميع البيانات بشكل صحيح قبل الضغط على زر "تسجيل الحساب".
+  </div>
+
+  <div style="text-align: center;">
+    <a routerLink="/login" class="log-button">هل لديك حساب بالفعل؟ تسجيل الدخول</a>
+  </div>
+</div>

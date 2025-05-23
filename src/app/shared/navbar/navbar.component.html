@@ -1,0 +1,35 @@
+<nav class="navbar">
+  <div class="logo">
+    <img src="/جامعة_دمنهور.png" alt="شعار جامعة دمنهور" />
+    <span class="university-name">جامعة دمنهور</span>
+  </div>
+  <ul>
+  <ng-container *ngIf="isHomePage(); else notHome">
+    <li><a routerLink="/login">تسجيل الدخول</a></li>
+    <li><a routerLink="/register">إنشاء حساب</a></li>
+  </ng-container>
+
+  <ng-template #notHome>
+    <ng-container *ngIf="isSubmitComplaintPage(); else notSubmit">
+      <li><a routerLink="/check-complaint-status">متابعة الشكوى</a></li>
+      <li><a routerLink="/complaints-log">سجل الشكاوى</a></li>
+    </ng-container>
+
+    <ng-template #notSubmit>
+      <ng-container *ngIf="isProfilePage(); else defaultLinks">
+        <li><a routerLink="/submit-complaint">تقديم شكوى</a></li>
+        <li><a routerLink="/check-complaint-status">متابعة الشكوى</a></li>
+        <li><a routerLink="/complaints-log">سجل الشكاوى</a></li>
+      </ng-container>
+    </ng-template>
+  </ng-template>
+
+  <ng-template #defaultLinks>
+    <li><a routerLink="/login">تسجيل الدخول</a></li>
+    <li><a routerLink="/register">إنشاء حساب</a></li>
+    <li><a routerLink="/check-complaint-status">متابعة الشكوى</a></li>
+    <li><a routerLink="/complaints-log">سجل الشكاوى</a></li>
+  </ng-template>
+</ul>
+
+</nav>

@@ -1,0 +1,65 @@
+<div class="main-heading">
+  <h1>استمارة الشكاوي و الاقتراحات</h1>
+</div>
+
+<div class="section">
+  <div class="container">
+    <div class="content">
+      <div class="text">
+        <h1>بالرجاء ملئ البيانات التالية</h1>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="complaint-form">
+  <form #complaintForm="ngForm" (ngSubmit)="onSubmit(complaintForm)" novalidate>
+
+    <label for="email">العنوان (البريد الإلكتروني)</label>
+    <input
+      type="email"
+      id="email"
+      name="email"
+      required
+      placeholder="ادخل بريدك الالكتروني"
+      ngModel
+    />
+
+    <label for="college">القطاع</label>
+    <select id="college" name="college" required ngModel>
+      <option value="" disabled selected>اختر القطاع</option>
+      <option value="قطاع شئون التعليم و الطلاب">قطاع شئون التعليم و الطلاب</option>
+      <option value="قطاع ادارة الجامعة">قطاع ادارة الجامعة</option>
+      <option value="قطاع الدراسات العليا">قطاع الدراسات العليا</option>
+      <option value="قطاع امين عام الجامعة">قطاع امين عام الجامعة</option>
+      <option value="قطاع خجمة المجتمع">قطاع خجمة المجتمع</option>
+    </select>
+
+    <label for="complaint-type">النوع</label>
+    <select id="complaint-type" name="complaint_type" required ngModel>
+      <option value="" disabled selected>اختر النوع</option>
+      <option value="شكوى">شكوى</option>
+      <option value="اقتراح">اقتراح</option>
+    </select>
+
+    <label for="subject">الوصف</label>
+    <textarea id="subject" name="subject" required ngModel placeholder="أدخل وصف الشكوى أو الاقتراح"></textarea>
+
+    <label for="file-upload">تحميل مرفق (اختياري):</label>
+    <input
+      type="file"
+      id="file-upload"
+      name="file"
+      accept=".pdf,.doc,.docx,.jpg,.png,.jpeg"
+      (change)="onFileSelected($event)"
+    />
+
+    <button type="submit">تسجيل الشكوى</button>
+  </form>
+
+  <div class="form-message" *ngIf="formMessage">{{ formMessage }}</div>
+
+  <div style="text-align: center; margin-top: 40px;">
+    <a routerLink="/complaints-log" class="log-button" aria-label="عرض سجل الشكاوى">📋 لعرض سجل الشكاوى</a>
+  </div>
+</div>

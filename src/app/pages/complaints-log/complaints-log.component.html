@@ -1,0 +1,29 @@
+<div class="complaint-history container">
+  <h1>سجل الشكاوى</h1>
+
+  <table class="complaints-table">
+    <thead>
+      <tr>
+        <th>رقم الشكوى</th>
+        <th>نوع الشكوي</th>
+        <th>تاريخ التقديم</th>
+        <th>الحالة</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let complaint of complaints">
+        <td>{{ complaint.id }}</td>
+        <td>{{ complaint.type }}</td>
+        <td>{{ complaint.date }}</td>
+        <td class="status"
+            [class.done]="complaint.status === 'done'"
+            [class.pending]="complaint.status === 'pending'"
+            [class.rejected]="complaint.status === 'rejected'">
+          {{ complaint.status === 'done' ? 'تم الرد' : complaint.status === 'pending' ? 'قيد الانتظار' : 'تم الرفض' }}
+        </td>
+      </tr>
+    </tbody>
+  </table>
+
+  <a routerLink="/submit-complaint" class="back-button">العودة لتقديم شكوى جديدة</a>
+</div>

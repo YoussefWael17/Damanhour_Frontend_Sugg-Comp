@@ -1,0 +1,49 @@
+<div class="login-container">
+  <div class="main-heading">
+    <h1>مرحباً مجدداً</h1>
+  </div>
+  <div class="side-heading">
+    <p>حان وقت إحداث الفرق</p>
+  </div>
+  <div class="login-form">
+    <form #loginForm="ngForm" (ngSubmit)="onSubmit(loginForm)" novalidate>
+      <label for="email">البريد الإلكتروني</label>
+      <input
+        type="email"
+        id="email"
+        name="email"
+        placeholder="ادخل بريدك الالكتروني"
+        required
+        ngModel
+      />
+
+      <div class="password-input-wrapper">
+        <label for="password">كلمة المرور</label>
+        <input
+          [type]="showPassword ? 'text' : 'password'"
+          id="password"
+          name="password"
+          placeholder="ادخل كلمة المرور"
+          required
+          ngModel
+        />
+        <i
+          class="fa"
+          (click)="togglePassword()"
+          [ngClass]="showPassword ? 'fa-eye' : 'fa-eye-slash'"
+          style="cursor:pointer"
+        ></i>
+      </div>
+
+      <div class="forgot-password">
+  <a routerLink="/forget-password">هل نسيت كلمة المرور؟</a>
+</div>
+
+
+      <button type="submit">تسجيل الدخول</button>
+    </form>
+  </div>
+  <div class="no-account">
+  <a routerLink="/register" class="no-account-link">ليس لديك حساب؟ سجل الآن وابدأ رحلتك</a>
+</div>
+</div>

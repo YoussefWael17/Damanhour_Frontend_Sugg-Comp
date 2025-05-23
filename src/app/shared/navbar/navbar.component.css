@@ -1,0 +1,123 @@
+body {
+    background-color: #f4f4f4;
+    font-family: 'Cairo', sans-serif;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+    color: #333;
+}
+
+
+.navbar {
+    background: linear-gradient(to right, #1E427E, #12284C); 
+    color: white;
+    padding: 0;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.navbar .logo {
+    display: flex; 
+    align-items: center; 
+}
+
+.navbar .logo img {
+    height: 50px;
+    padding: 5px;
+    border-radius: 5px;
+    margin: 10px 12px;
+}
+
+.navbar .logo .university-name {
+    font-size: 20px;
+    font-weight: 900;
+    background: linear-gradient(to right, #FF731D, #E65C00); 
+    background-clip: text;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+
+.navbar ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    flex-grow: 1;
+    justify-content: space-around;
+    align-items: center;
+}
+
+.navbar ul li {
+    flex-grow: 1;
+    text-align: center;
+}
+
+.navbar ul li a {
+    color: white;
+    text-decoration: none;
+    font-size: 18px;
+    display: block;
+    padding: 10px 0;
+    transition: color 0.4s ease, transform 0.3s ease-in-out, background-color 0.4s ease;
+}
+
+.navbar ul li a:hover {
+    color: #FF731D;
+    transform: scale(1.05);
+}
+
+/* Responsive Navbar */
+@media (max-width: 768px) {
+  .navbar {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .navbar .logo {
+    justify-content: center;
+    width: 100%;
+    padding: 10px 0;
+  }
+
+  .navbar ul {
+    flex-direction: column;
+    width: 100%;
+    padding: 0;
+    margin: 0;
+  }
+
+  .navbar ul li {
+    width: 100%;
+  }
+
+  .navbar ul li a {
+    font-size: 16px;
+    padding: 12px;
+    border-top: 1px solid rgba(255, 255, 255, 0.1);
+    text-align: right;
+  }
+
+  .navbar ul li:first-child a {
+    border-top: none;
+  }
+}
+
+@media (max-width: 480px) {
+  .navbar .logo .university-name {
+    font-size: 16px;
+  }
+
+  .navbar ul li a {
+    font-size: 14px;
+    padding: 10px;
+  }
+
+  .navbar .logo img {
+    height: 40px;
+    margin: 5px 10px;
+  }
+}

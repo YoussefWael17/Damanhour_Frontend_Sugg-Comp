@@ -1,0 +1,248 @@
+:root {
+  --main-color: #1E427E;
+  --main-padding-top: 100px;
+  --main-padding-bottom: 100px;
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: "Cairo", sans-serif;
+  overflow-x: hidden;
+}
+
+a {
+  text-decoration: none;
+}
+
+.container {
+  padding: 0 30px;
+}
+
+.main-heading {
+  text-align: center;
+  padding-top: 75px;
+  padding-bottom: 45px;
+}
+
+.main-heading h1 {
+  font-size: 48px;
+  color: #111;
+  font-weight: bold;
+  margin-bottom: 35px;
+}
+
+.section .container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 20px;
+}
+
+.section .content {
+  display: flex;
+  flex-wrap: wrap;
+  width: 100%;
+}
+
+.section .text {
+  font-size: 20px;
+  line-height: 1.8;
+  color: #333;
+  text-align: right;
+  position: relative;
+}
+
+.section .text h1 {
+  color: #000;
+  font-size: 40px;
+  font-weight: bold;
+  margin-bottom: 10px;
+}
+
+.section .text::after {
+  content: "";
+  position: absolute;
+  top: 5px;
+  right: -15px;
+  width: 6px;
+  height: 85%;
+  background-color: #FF731D;
+  border-radius: 2px;
+}
+
+.complaint-form {
+  max-width: 800px;
+  margin: 40px auto;
+  padding: 30px;
+  background-color: #f2f2f2;
+  border-radius: 12px;
+  box-shadow: 0 0 15px rgba(0, 0, 0, 0.1);
+}
+
+.complaint-form form {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.complaint-form label {
+  font-weight: 600;
+  color: var(--main-color);
+  transition: all 0.3s ease;
+  cursor: pointer;
+}
+
+.complaint-form label:hover {
+  color: #163366;
+  transform: scale(1.03);
+  font-weight: bold;
+}
+
+.complaint-form input,
+.complaint-form select,
+.complaint-form textarea {
+  padding: 15px;
+  border: 2px solid #ccc;
+  border-radius: 8px;
+  font-size: 18px;
+  font-family: "Cairo", sans-serif;
+  transition: all 0.3s ease;
+}
+
+.complaint-form input:focus,
+.complaint-form select:focus,
+.complaint-form textarea:focus {
+  outline: none;
+  border-image: linear-gradient(90deg, #FF731D, var(--main-color)) 1;
+}
+
+.complaint-form textarea {
+  resize: vertical;
+  min-height: 100px;
+}
+
+.complaint-form button {
+  background: linear-gradient(to right, var(--main-color), #12284C);
+  color: white;
+  padding: 20px 38px;
+  border: none;
+  border-radius: 8px;
+  font-size: 20px;
+  font-weight: bold;
+  transition: all 0.4s ease;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15);
+  cursor: pointer;
+}
+
+.complaint-form button:hover {
+  background: linear-gradient(to right, #FF731D, var(--main-color));
+  transform: translateY(-5px);
+  box-shadow: 0 6px 14px rgba(0, 0, 0, 0.2);
+}
+
+.form-message {
+  text-align: center;
+  margin-top: 20px;
+  padding: 10px;
+  background-color: #ffcc00;
+  color: #333;
+  font-size: 16px;
+  font-weight: bold;
+  border-radius: 5px;
+  border: 1px solid #e6a800;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+  max-width: 600px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.log-button {
+  background: linear-gradient(to right, var(--main-color), #12284C);
+  color: white;
+  padding: 20px 33px;
+  border: none;
+  border-radius: 8px;
+  font-size: 20px;
+  font-weight: bold;
+  text-decoration: none;
+  transition: all 0.3s ease;
+  display: inline-block;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15);
+  margin-top: 50px;
+}
+
+.log-button:hover {
+  background: linear-gradient(to right, #FF731D, var(--main-color));
+  transform: translateY(-2px);
+  box-shadow: 0 6px 14px rgba(0, 0, 0, 0.2);
+}
+
+/* Responsive */
+@media (max-width: 1209px) {
+  .main-heading h1 {
+    font-size: 38px;
+  }
+
+  .section .text h1 {
+    font-size: 32px;
+  }
+}
+
+@media (max-width: 768px) {
+  .main-heading h1 {
+    font-size: 30px;
+  }
+
+  .section .text h1 {
+    font-size: 28px;
+  }
+}
+
+@media (max-width: 480px) {
+  .main-heading h1 {
+    font-size: 22px;
+    padding: 0 10px;
+  }
+
+  .section .text h1 {
+    font-size: 20px;
+    padding: 0 10px;
+  }
+
+  .complaint-form {
+    padding: 15px;
+    margin: 20px 10px;
+  }
+
+  .complaint-form input,
+  .complaint-form select,
+  .complaint-form textarea {
+    font-size: 16px;
+    padding: 10px;
+  }
+
+  .complaint-form button,
+  .log-button {
+    font-size: 16px;
+    padding: 12px 20px;
+  }
+
+  .log-button {
+    margin-top: 30px;
+  }
+
+  .form-message {
+    font-size: 14px;
+    padding: 8px;
+  }
+
+  .section .text::after {
+    right: -10px;
+    height: 70%;
+  }
+}

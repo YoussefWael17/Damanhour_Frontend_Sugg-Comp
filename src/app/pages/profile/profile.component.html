@@ -1,0 +1,25 @@
+<div class="profile container">
+  <!-- Header: صورة + اسم + الكلية -->
+  <div class="profile-header">
+    <img src="assets/profile.jpg" alt="Profile" class="profile-image" />
+    <div class="profile-info">
+      <h2 class="name">أحمد محمد</h2>
+      <p class="faculty">كلية الهندسة</p>
+    </div>
+  </div>
+
+  <!-- Section Title -->
+  <h3 class="section-title">معلومات المستخدم الشخصية</h3>
+
+  <!-- معلومات المستخدم -->
+  <div class="user-details">
+    <p class="detail-item"><strong>الاسم الكامل:</strong> {{ user.fullName }}</p>
+    <p class="detail-item"><strong>البريد الإلكتروني:</strong> {{ user.email }}</p>
+    <p class="detail-item"><strong>الكلية:</strong> {{ user.college }}</p>
+    <p class="detail-item"><strong>رقم الهاتف:</strong> {{ user.phone }}</p>
+    <p class="detail-item"><strong>الصفة:</strong> {{ user.role }}</p>
+  </div>
+
+  <!-- زر تسجيل الخروج -->
+  <button class="logout-button" (click)="logout()">تسجيل الخروج</button>
+</div>
