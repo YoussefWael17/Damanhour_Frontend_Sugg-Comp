@@ -1,3 +1,4 @@
+import { TranslateModule } from '@ngx-translate/core';
 import { Component } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule, NgForm } from '@angular/forms';
@@ -6,7 +7,7 @@ import { RouterModule, Router } from '@angular/router';
 @Component({
   selector: 'app-forget-password',
   standalone: true,
-  imports: [CommonModule, FormsModule, RouterModule],
+  imports: [CommonModule, FormsModule, RouterModule,TranslateModule],
   templateUrl: './forget-password.component.html',
   styleUrls: ['./forget-password.component.css']
 })
@@ -20,7 +21,7 @@ export class ForgetPasswordComponent {
     if (form.valid) {
       console.log('Email:', this.email);
       this.successMessage = 'تم إرسال رابط إعادة التعيين إلى بريدك الإلكتروني.';
-      
+
       // إعادة التوجيه بعد ثوانٍ (اختياري)
       setTimeout(() => {
         this.router.navigate(['/login']);

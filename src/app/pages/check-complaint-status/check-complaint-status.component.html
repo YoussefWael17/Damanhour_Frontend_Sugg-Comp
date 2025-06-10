@@ -1,13 +1,13 @@
 <div class="status-page container">
-  <h1>متابعة الشكوى</h1>
+  <h1> {{ 'check-complaint-status.title' | translate }} </h1>
 
   <div class="status-card" *ngIf="complaintStatus">
-    <p><strong>تاريخ تقديم الشكوى:</strong> {{ complaintStatus.submittedDate | date:'longDate' }}</p>
+    <p><strong>{{ 'check-complaint-status.date' | translate }}:</strong> {{ complaintStatus.submittedDate | date:'longDate' }}</p>
     <p>
-      <strong>حالة الشكوى:</strong>
+      <strong>{{ 'check-complaint-status.status' | translate }}</strong>
       <span [ngClass]="getStatusClass(complaintStatus.status)">{{ complaintStatus.status }}</span>
     </p>
-    <p><strong>الرد:</strong> {{ complaintStatus.response }}</p>
+    <p><strong>{{ 'check-complaint-status.reply' | translate }}</strong> {{ complaintStatus.response }}</p>
   </div>
 
   <div *ngIf="!complaintStatus">
@@ -15,12 +15,12 @@
   </div>
 
 <div class="status-actions">
-  <button (click)="refreshStatus()" class="refresh-button">تحديث الحالة</button>
-  <button (click)="goToSubmitComplaint()" class="back-button">الرجوع إلى صفحة تقديم الشكوى</button>
-  <button (click)="goToComplaintsLog()" class="history-button">عرض سجل الشكاوى</button>
+  <button (click)="refreshStatus()" class="refresh-button">{{ 'check-complaint-status.refresh' | translate }}</button>
+  <button (click)="goToSubmitComplaint()" class="back-button">{{ 'check-complaint-status.back' | translate }}</button>
+  <button (click)="goToComplaintsLog()" class="history-button">{{ 'check-complaint-status.show' | translate }}</button>
 </div>
 
   <div class="note">
-    يتم تحديث حالة الشكوى تلقائيًا بعد المراجعة من الإدارة. نرجو مراجعة الصفحة لاحقًا إذا لم يتم الرد بعد.
+    {{ 'check-complaint-status.end_msg' | translate }}
   </div>
 </div>

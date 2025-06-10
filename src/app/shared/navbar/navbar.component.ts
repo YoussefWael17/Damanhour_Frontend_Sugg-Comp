@@ -1,12 +1,13 @@
+import { TranslateModule } from '@ngx-translate/core';
 import { Component } from '@angular/core';
 import { Router, NavigationEnd, RouterLink } from '@angular/router';
 import { filter } from 'rxjs/operators';
 import { NgIf } from '@angular/common';  // **اضف هذا**
-
+import { CommonModule } from '@angular/common';
 @Component({
   selector: 'app-navbar',
   standalone: true,
-  imports: [RouterLink, NgIf],  // **اضف NgIf هنا**
+  imports: [RouterLink, NgIf, TranslateModule,CommonModule],  // **اضف NgIf هنا**
   templateUrl: './navbar.component.html',
   styleUrls: ['./navbar.component.css']
 })

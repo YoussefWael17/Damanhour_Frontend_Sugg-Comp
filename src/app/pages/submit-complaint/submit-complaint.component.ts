@@ -1,3 +1,4 @@
+import { TranslateModule } from '@ngx-translate/core';
 import { Component } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule, NgForm } from '@angular/forms';
@@ -6,7 +7,7 @@ import { RouterModule, Router } from '@angular/router';  // استيراد Route
 @Component({
   selector: 'app-submit-complaint',
   standalone: true,
-  imports: [CommonModule, FormsModule, RouterModule],  // إضافة RouterModule هنا
+  imports: [CommonModule, FormsModule, RouterModule,TranslateModule],  // إضافة RouterModule هنا
   templateUrl: './submit-complaint.component.html',
   styleUrls: ['./submit-complaint.component.css']
 })

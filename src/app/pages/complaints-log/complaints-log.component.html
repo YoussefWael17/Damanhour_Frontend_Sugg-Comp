@@ -1,13 +1,13 @@
 <div class="complaint-history container">
-  <h1>سجل الشكاوى</h1>
+  <h1> {{ 'complaints-log.title' | translate }} </h1>
 
   <table class="complaints-table">
     <thead>
       <tr>
-        <th>رقم الشكوى</th>
-        <th>نوع الشكوي</th>
-        <th>تاريخ التقديم</th>
-        <th>الحالة</th>
+        <th> {{ 'complaints-log.number' | translate }}</th>
+        <th> {{ 'complaints-log.type' | translate }}</th>
+        <th> {{ 'complaints-log.date' | translate }}</th>
+        <th> {{ 'complaints-log.status' | translate }}</th>
       </tr>
     </thead>
     <tbody>
@@ -25,5 +25,5 @@
     </tbody>
   </table>
 
-  <a routerLink="/submit-complaint" class="back-button">العودة لتقديم شكوى جديدة</a>
+  <a routerLink="/submit-complaint" class="back-button"> {{ 'complaints-log.back' | translate }}</a>
 </div>

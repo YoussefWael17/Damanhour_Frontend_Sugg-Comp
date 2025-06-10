@@ -1,0 +1,26 @@
+.button-container {
+  position:absolute;         
+  top: 1rem;
+  left: 1rem;
+  display: flex;
+  gap: 1rem;
+  z-index: 1000;
+}
+
+button {
+  background-color: #0c3796;
+  color: white;
+  border: none;
+  padding: 0.6rem 1.2rem;
+  font-size: 16px;
+  font-weight: bold;
+  border-radius: 1rem;
+  cursor: pointer;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  transition: all 0.3s ease;
+}
+
+button:hover {
+  background-color: #e25d2d;
+  transform: scale(1.05);
+}

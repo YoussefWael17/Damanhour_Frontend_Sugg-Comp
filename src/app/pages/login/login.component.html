@@ -1,29 +1,29 @@
 <div class="login-container">
   <div class="main-heading">
-    <h1>مرحباً مجدداً</h1>
+    <h1>{{ 'login.welcome-msg' | translate }}</h1>
   </div>
   <div class="side-heading">
-    <p>حان وقت إحداث الفرق</p>
+    <p>{{ 'login.encorage_msg' | translate }}</p>
   </div>
   <div class="login-form">
     <form #loginForm="ngForm" (ngSubmit)="onSubmit(loginForm)" novalidate>
-      <label for="email">البريد الإلكتروني</label>
+      <label for="email">{{ 'login.email' | translate }}</label>
       <input
         type="email"
         id="email"
         name="email"
-        placeholder="ادخل بريدك الالكتروني"
+        placeholder="{{ 'login.enter_email' | translate }}"
         required
         ngModel
       />
 
       <div class="password-input-wrapper">
-        <label for="password">كلمة المرور</label>
+        <label for="password">{{ 'login.password' | translate }}</label>
         <input
           [type]="showPassword ? 'text' : 'password'"
           id="password"
           name="password"
-          placeholder="ادخل كلمة المرور"
+          placeholder="{{ 'login.enter_pas' | translate }}"
           required
           ngModel
         />
@@ -36,14 +36,14 @@
       </div>
 
       <div class="forgot-password">
-  <a routerLink="/forget-password">هل نسيت كلمة المرور؟</a>
+  <a routerLink="/forget-password">{{ 'login.forget_question' | translate }}</a>
 </div>
 
 
-      <button type="submit">تسجيل الدخول</button>
+      <button type="submit">{{ 'login.end_reg' | translate }}</button>
     </form>
   </div>
   <div class="no-account">
-  <a routerLink="/register" class="no-account-link">ليس لديك حساب؟ سجل الآن وابدأ رحلتك</a>
+  <a routerLink="/register" class="no-account-link">{{ 'login.question' | translate }}</a>
 </div>
 </div>

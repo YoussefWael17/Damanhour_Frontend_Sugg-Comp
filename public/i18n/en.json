@@ -1,0 +1,128 @@
+{
+  "HELLO": "Hello",
+  "WELCOME": "Welcome to our website!",
+  "home" : {
+  "title" : "Welcome to the complaints and suggestions page",
+  "subject":"This home page displays quick links to access various sections of the system."
+  },
+  "navbar":{
+    "flag":"Damanhour University",
+    "login":"Login",
+    "register":"Create Account",
+   "Submit": "Submit a complaint",
+"follow": "check the complaint",
+"records": "Complaint record"
+
+   },
+   "footer":{
+    "line":"Damanhour University. All rights reserved."
+
+   },
+   "register":{
+"title":"New Account Registration Form",
+"sub_title":"Please enter the following information to create an account",
+"full_name":"Full Name",
+"enter_name":"Enter your full name",
+"national_id":"National ID",
+"enter_nid":"Enter your national ID",
+"email":"Email",
+"enter_email":"Enter your email",
+"phone_number":"Phone Number",
+"enter_number":"Enter your phone number",
+"password":"Password",
+"status":"Personal identity",
+"enter_status":"Enter Personal identity",
+"status1":"Student",
+"status2":"Faculty Member",
+"status3":"Government Employee",
+"status4":"Other",
+"uni":"Faculty",
+"enter_uni":"Choose the faculty",
+"uni1": "Faculty of Arts",
+"uni2":"Faculty of Science",
+"uni3":"Faculty of Engineering",
+"uni4": "Faculty of Veterinary Medicine",
+"uni5": "Faculty of Education",
+"uni6": "Faculty of Agriculture",
+"uni7": "Faculty of Commerce",
+"uni8": "Faculty of Nursing",
+"uni9": "Faculty of Pharmacy",
+"uni10": "Faculty of Computers and Information",
+"uni11": "Faculty of Specific Education",
+"confirm":"I agree to the Terms of Use and I pledge to provide correct information.",
+"end_reg":"Account Registration",
+"notice":"Make sure you have entered all information correctly before clicking the Account Registration button.",
+"question":"Do you already have an account? Log in"
+},
+"login":{
+"welcome-msg":"Hello again",
+"encorage_msg":"It's time to make a difference",
+"email":"Email",
+"enter_email":"Enter your email",
+"password":"Password",
+"enter_pas":"Enter your password",
+"forget_question":"? Forgot your password",
+"end_reg":"Sign in",
+"question":"Don't have an account? Register now and start your journey"
+},
+
+"profile":{
+"info":"User Personal Information",
+"name":"Full Name:",
+"email":"Email:",
+"faculty":"College:",
+"phone":"Phone Number:",
+"status":"Personal identity:",
+"sign out": "Sign out"
+},
+"forget-password":{
+"question":"?Forget your password",
+"msg":"Enter your registered email address and we'll send you a link to reset your password.",
+"email":"Email",
+"enter_email":"Enter your email",
+"send_link":"Send a reset link",
+"back":"Back to login"
+},
+"submit-complaint":{
+"title":"Complaints and Suggestions Form",
+"sub_title":"Please fill out the following information",
+"address":"Address (Email)",
+"enter_address":"Enter your email",
+"sector":"Sector",
+"enter_sector":"Select Sector",
+"type":"Type",
+"enter_type":"Select Type",
+"desc":"Description",
+"desc_content":"Enter a description of the complaint or suggestion",
+"download":":Upload an attachment (optional)",
+"send":"Register a complaint",
+"show":"To view the complaint log",
+"sector1":"Education and Student Affairs Sector",
+"sector2":"University Administration Sector",
+"sector3":"Graduate Studies Sector",
+"sector4":"University Secretary-General Sector",
+"sector5":"Community Service Sector",
+"type1":"Complaint",
+"type2":"Suggestion"
+
+},
+
+"complaints-log":{
+"title":"Complaints Log",
+"number":"Complaint Number",
+"type":"Complaint Type",
+"date":"Submission Date",
+"status":"Status",
+"back":"Return to Submit a New Complaint"
+},
+"check-complaint-status":{
+"title":"Complaint Follow-up",
+"date":"Complaint Submission Date:",
+"status":"Complaint Status:",
+"reply":"Reply:",
+"refresh":"Update Status",
+"back":"Return to Complaint Submission Page",
+"show":"View Complaint History",
+"end_msg":"The complaint status is automatically updated after management review. Please check the page later if you have not received a response yet."
+}
+}

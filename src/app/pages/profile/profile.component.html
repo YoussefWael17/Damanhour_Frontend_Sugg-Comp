@@ -9,17 +9,17 @@
   </div>
 
   <!-- Section Title -->
-  <h3 class="section-title">معلومات المستخدم الشخصية</h3>
+  <h3 class="section-title">{{ 'profile.info' | translate }}</h3>
 
   <!-- معلومات المستخدم -->
   <div class="user-details">
-    <p class="detail-item"><strong>الاسم الكامل:</strong> {{ user.fullName }}</p>
-    <p class="detail-item"><strong>البريد الإلكتروني:</strong> {{ user.email }}</p>
-    <p class="detail-item"><strong>الكلية:</strong> {{ user.college }}</p>
-    <p class="detail-item"><strong>رقم الهاتف:</strong> {{ user.phone }}</p>
-    <p class="detail-item"><strong>الصفة:</strong> {{ user.role }}</p>
+    <p class="detail-item"><strong>{{ 'profile.name' | translate }}</strong> {{ user.fullName }}</p>
+    <p class="detail-item"><strong>{{ 'profile.email' | translate }}</strong> {{ user.email }}</p>
+    <p class="detail-item"><strong>{{ 'profile.faculty' | translate }}</strong> {{ user.college }}</p>
+    <p class="detail-item"><strong>{{ 'profile.phone' | translate }}</strong> {{ user.phone }}</p>
+    <p class="detail-item"><strong>{{ 'profile.status' | translate }}</strong> {{ user.role }}</p>
   </div>
 
   <!-- زر تسجيل الخروج -->
-  <button class="logout-button" (click)="logout()">تسجيل الخروج</button>
+  <button class="logout-button" (click)="logout()">{{ 'profile.sign out' | translate }}</button>
 </div>

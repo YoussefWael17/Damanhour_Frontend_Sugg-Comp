@@ -1,12 +1,12 @@
 <div class="main-heading">
-  <h1>استمارة تسجيل حساب جديد</h1>
+  <h1>{{ 'register.title' | translate }}</h1>
 </div>
 
 <div class="section">
   <div class="container">
     <div class="content">
       <div class="text">
-        <h1>يرجى إدخال البيانات التالية لإنشاء حساب</h1>
+        <h1>{{ 'register.sub_title' | translate }}</h1>
       </div>
     </div>
   </div>
@@ -14,25 +14,24 @@
 
 <div class="complaint-form">
   <form (ngSubmit)="onSubmit(registerForm)" #registerForm="ngForm">
-    <label for="full-name">الاسم الكامل</label>
-    <input type="text" id="full-name" name="full_name" placeholder="ادخل الاسم ثلاثي" ngModel required />
-
-    <label for="national-id">الرقم القومي</label>
-    <input type="text" id="national-id" name="national_id" placeholder="ادخل الرقم القومي" ngModel required
+    <label for="full-name">{{ 'register.full_name' | translate }}</label>
+    <input type="text" id="full-name" name="full_name" placeholder="{{ 'register.enter_name' | translate }}" ngModel required />
+    <label for="national-id">{{ 'register.national_id' | translate }}</label>
+    <input type="text" id="national-id" name="national_id" placeholder="{{ 'register.enter_nid' | translate }}" ngModel required
       pattern="[0-9]{14}" maxlength="14" inputmode="numeric" (keypress)="allowOnlyNumbers($event)" />
     <div *ngIf="registerForm.submitted && registerForm.controls['national_id']?.invalid" class="error-message">
       الرقم القومي يجب أن يتكون من 14 رقمًا.
     </div>
 
-    <label for="email">البريد الإلكتروني</label>
-    <input type="email" id="email" name="email" placeholder="ادخل البريد الالكتروني" ngModel required />
+    <label for="email">{{ 'register.email' | translate }}</label>
+    <input type="email" id="email" name="email" placeholder="{{ 'register.enter_email' | translate }}" ngModel required />
 
-    <label for="phone">رقم الهاتف</label>
-    <input type="tel" id="phone" name="phone" placeholder="ادخل رقم الهاتف" ngModel required pattern="[0-9]{11}"
+    <label for="phone">{{ 'register.phone_number' | translate }}</label>
+    <input type="tel" id="phone" name="phone" placeholder="{{ 'register.enter_number' | translate }}" ngModel required pattern="[0-9]{11}"
       maxlength="11" inputmode="numeric" (keypress)="allowOnlyNumbers($event)" />
 
     <div class="password-input-wrapper">
-      <label for="password">كلمة المرور</label>
+      <label for="password">{{ 'register.password' | translate }}</label>
       <input [type]="showPassword ? 'text' : 'password'" id="password" name="password" ngModel required
         aria-required="true" />
       <i class="fa password-toggle" [ngClass]="showPassword ? 'fa-eye' : 'fa-eye-slash'" (click)="togglePassword()"
@@ -40,42 +39,49 @@
     </div>
 
 
-    <label for="role">الصفة</label>
+    <label for="role">{{ 'register.status' | translate }}</label>
     <select id="role" name="role" ngModel required>
-      <option value="" disabled selected>اختر الصفة</option>
-      <option value="student">طالب</option>
-      <option value="faculty_member">عضو هيئة تدريس</option>
-      <option value="government_employee">موظف حكومي</option>
-      <option value="other">أخرى</option>
+      <option value="" disabled selected>{{ 'register.enter_status' | translate }}</option>
+      <option value="student">{{ 'register.status1' | translate }}</option>
+      <option value="faculty_member">{{ 'register.status2' | translate }}</option>
+      <option value="government_employee">{{ 'register.status3' | translate }}</option>
+      <option value="other">{{ 'register.status4' | translate }}</option>
     </select>
 
-    <label for="college">الكلية</label>
+    <label for="college">{{ 'register.uni' | translate }}</label>
     <select id="college" name="college" ngModel required>
-      <option value="" disabled selected>اختر الكلية</option>
-      <option value="arts">كلية الآداب</option>
-      <option value="science">كلية العلوم</option>
-      <option value="engineering">كلية الهندسة</option>
-      <option value="medicine">كلية الطب</option>
+      <option value="" disabled selected>{{ 'register.enter_uni' | translate }}</option>
+      <option value="arts">{{ 'register.uni1' | translate }}</option>
+      <option value="science">{{ 'register.uni2' | translate }}</option>
+      <option value="engineering">{{ 'register.uni3' | translate }}</option>
+      <option value="medicine"> {{ 'register.uni4' | translate }}</option>
+      <option value="Education"> {{ 'register.uni5' | translate }}</option>
+        <option value="Agriculture"> {{ 'register.uni6' | translate }}</option>
+          <option value="Commerce"> {{ 'register.uni7' | translate }}</option>
+            <option value="Nursing">{{ 'register.uni8' | translate }}</option>
+              <option value="Pharmacy"> {{ 'register.uni9' | translate }}</option>
+                <option value="Computers and Information."> {{ 'register.uni10' | translate }}</option>
+                <option value="Special Education"> {{ 'register.uni11' | translate }}</option>
     </select>
 
     <div class="checkbox-wrapper">
       <label>
         <input type="checkbox" name="terms" ngModel required />
-        أوافق على <a href="#">سياسة الاستخدام</a> وأتعهد بتقديم بيانات صحيحة.
+<a href="#">{{ 'register.confirm' | translate }}</a>
       </label>
       <div *ngIf="registerForm.submitted && registerForm.controls['terms']?.invalid" class="error-message">
         يجب الموافقة على سياسة الاستخدام.
       </div>
     </div>
 
-    <button type="submit" [disabled]="!registerForm.valid">تسجيل الحساب</button>
+    <button type="submit" [disabled]="!registerForm.valid">{{ 'register.end_reg' | translate }}</button>
   </form>
 
   <div class="form-message">
-    تأكد من إدخال جميع البيانات بشكل صحيح قبل الضغط على زر "تسجيل الحساب".
+    {{ 'register.notice' | translate }}
   </div>
 
   <div style="text-align: center;">
-    <a routerLink="/login" class="log-button">هل لديك حساب بالفعل؟ تسجيل الدخول</a>
+    <a routerLink="/login" class="log-button">{{ 'register.question' | translate }}</a>
   </div>
 </div>

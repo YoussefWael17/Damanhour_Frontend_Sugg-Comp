@@ -1,3 +1,4 @@
+import { TranslateModule } from '@ngx-translate/core';
 import { Component } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { RouterModule, Router } from '@angular/router';
@@ -5,7 +6,7 @@ import { RouterModule, Router } from '@angular/router';
 @Component({
   selector: 'app-check-complaint-status',
   standalone: true,
-  imports: [CommonModule, RouterModule],
+  imports: [CommonModule, RouterModule, TranslateModule],
   templateUrl: './check-complaint-status.component.html',
   styleUrls: ['./check-complaint-status.component.css']
 })

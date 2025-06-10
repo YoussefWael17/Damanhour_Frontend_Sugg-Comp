@@ -1,12 +1,12 @@
 <div class="main-heading">
-  <h1>استمارة الشكاوي و الاقتراحات</h1>
+  <h1> {{ 'submit-complaint.title' | translate}} </h1>
 </div>
 
 <div class="section">
   <div class="container">
     <div class="content">
       <div class="text">
-        <h1>بالرجاء ملئ البيانات التالية</h1>
+        <h1> {{ 'submit-complaint.sub_title' | translate}} </h1>
       </div>
     </div>
   </div>
@@ -15,37 +15,37 @@
 <div class="complaint-form">
   <form #complaintForm="ngForm" (ngSubmit)="onSubmit(complaintForm)" novalidate>
 
-    <label for="email">العنوان (البريد الإلكتروني)</label>
+    <label for="email"> {{ 'submit-complaint.address' | translate}} </label>
     <input
       type="email"
       id="email"
       name="email"
       required
-      placeholder="ادخل بريدك الالكتروني"
+      placeholder=" {{ 'submit-complaint.enter_address' | translate}} "
       ngModel
     />
 
-    <label for="college">القطاع</label>
+    <label for="college"> {{ 'submit-complaint.sector' | translate}} </label>
     <select id="college" name="college" required ngModel>
-      <option value="" disabled selected>اختر القطاع</option>
-      <option value="قطاع شئون التعليم و الطلاب">قطاع شئون التعليم و الطلاب</option>
-      <option value="قطاع ادارة الجامعة">قطاع ادارة الجامعة</option>
-      <option value="قطاع الدراسات العليا">قطاع الدراسات العليا</option>
-      <option value="قطاع امين عام الجامعة">قطاع امين عام الجامعة</option>
-      <option value="قطاع خجمة المجتمع">قطاع خجمة المجتمع</option>
+      <option value="" disabled selected> {{ 'submit-complaint.enter_sector' | translate}} </option>
+      <option value="قطاع شئون التعليم و الطلاب"> {{ 'submit-complaint.sector1' | translate}} </option>
+      <option value="قطاع ادارة الجامعة">{{ 'submit-complaint.sector2' | translate}}</option>
+      <option value="قطاع الدراسات العليا">{{ 'submit-complaint.sector3' | translate}}</option>
+      <option value="قطاع امين عام الجامعة">{{ 'submit-complaint.sector4' | translate}}</option>
+      <option value="قطاع خجمة المجتمع">{{ 'submit-complaint.sector5' | translate}}</option>
     </select>
 
-    <label for="complaint-type">النوع</label>
+    <label for="complaint-type"> {{ 'submit-complaint.type' | translate}} </label>
     <select id="complaint-type" name="complaint_type" required ngModel>
-      <option value="" disabled selected>اختر النوع</option>
-      <option value="شكوى">شكوى</option>
-      <option value="اقتراح">اقتراح</option>
+      <option value="" disabled selected>{{ 'submit-complaint.enter_type' | translate}}</option>
+      <option value="شكوى">{{ 'submit-complaint.type1' | translate}}</option>
+      <option value="اقتراح">{{ 'submit-complaint.type2' | translate}}</option>
     </select>
 
-    <label for="subject">الوصف</label>
-    <textarea id="subject" name="subject" required ngModel placeholder="أدخل وصف الشكوى أو الاقتراح"></textarea>
+    <label for="subject">{{ 'submit-complaint.desc' | translate}}</label>
+    <textarea id="subject" name="subject" required ngModel placeholder="{{ 'submit-complaint.desc_content' | translate}}"></textarea>
 
-    <label for="file-upload">تحميل مرفق (اختياري):</label>
+    <label for="file-upload">{{ 'submit-complaint.download' | translate}}</label>
     <input
       type="file"
       id="file-upload"
@@ -54,12 +54,12 @@
       (change)="onFileSelected($event)"
     />
 
-    <button type="submit">تسجيل الشكوى</button>
+    <button type="submit">{{ 'submit-complaint.send' | translate}}</button>
   </form>
 
   <div class="form-message" *ngIf="formMessage">{{ formMessage }}</div>
 
   <div style="text-align: center; margin-top: 40px;">
-    <a routerLink="/complaints-log" class="log-button" aria-label="عرض سجل الشكاوى">📋 لعرض سجل الشكاوى</a>
+    <a routerLink="/complaints-log" class="log-button" aria-label="عرض سجل الشكاوى">📋{{ 'submit-complaint.show' | translate}}</a>
   </div>
 </div>
