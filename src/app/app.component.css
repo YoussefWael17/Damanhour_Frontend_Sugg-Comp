@@ -1,11 +1,11 @@
 .button-container {
-  position:absolute;         
+  position: absolute;
   top: 1rem;
-  left: 1rem;
+  z-index: 1000;
   display: flex;
   gap: 1rem;
-  z-index: 1000;
 }
+
 
 button {
   background-color: #0c3796;
@@ -23,4 +23,17 @@ button {
 button:hover {
   background-color: #e25d2d;
   transform: scale(1.05);
+}
+
+/* ترتيب اللوجو والنص يتغير حسب اللغة */
+[dir="rtl"] .navbar .logo {
+  flex-direction: row; /* الصورة على اليمين والنص على اليسار */
+  margin-right: 2rem;
+  margin-left: 0;
+}
+
+[dir="ltr"] .navbar .logo {
+  flex-direction: row-reverse; /* الصورة على الشمال والنص على اليمين */
+  margin-left: 2rem;
+  margin-right: 0;
 }

@@ -31,8 +31,13 @@
     font-size: 20px;
     line-height: 1.8;
     color: #333;
-    text-align: right;
     position: relative;
+    &:dir(ltr) {
+        text-align: left;
+       }
+       &:dir(rtl) {
+       text-align: right;
+     }
 }
 
 .section .text h1 {
@@ -40,6 +45,12 @@
     font-size: 30px;
     font-weight: bold;
     margin-bottom: 10px;
+    &:dir(ltr) {
+        text-align: left;
+       }
+       &:dir(rtl) {
+       text-align: left;
+     }
 }
 
 .section .text::after {
@@ -56,16 +67,12 @@
 /* Form */
 .complaint-form {
     max-width: 900px;
-    /* زودنا العرض الأقصى */
     margin: 60px auto;
-    /* زودنا المسافة من العنوان والفوتر ووسّطنا أفقياً */
     padding: 30px;
     background-color: #fff;
-    /* خلفية أفتح للفورم */
     border-radius: 12px;
     box-shadow: 0 0 15px rgba(0, 0, 0, 0.1);
     border: 1px solid #ddd;
-    /* بوردر بسيط للفورم */
 }
 
 .complaint-form form {

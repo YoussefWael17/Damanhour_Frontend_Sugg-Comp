@@ -1,8 +1,7 @@
-
 :root {
-    --main-color: #1E427E;
-    --main-padding-top: 100px;
-    --main-padding-bottom: 100px;
+  --main-color: #1E427E;
+  --main-padding-top: 100px;
+  --main-padding-bottom: 100px;
 }
 
 html {
@@ -10,32 +9,57 @@ html {
 }
 
 * {
-    box-sizing: border-box;
-    margin: 0;
-    padding: 0;
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
 }
 
 body {
-    
-    font-family: "Cairo", sans-serif;
-    overflow-x: hidden;
-    background-color: #f8f9fa; 
-    color: #333;
-    line-height: 1.6;
-    direction: rtl; 
+  font-family: "Cairo", sans-serif;
+  overflow-x: hidden;
+  background-color: #f8f9fa;
+  color: #333;
+  line-height: 1.6;
+}
+
+/* اتجاه اللغة العربية */
+[dir="rtl"] body {
+  direction: rtl;
+  text-align: right;
+}
+
+/* اتجاه اللغة الإنجليزية */
+[dir="ltr"] body {
+  direction: ltr;
+  text-align: left;
 }
 
 a {
-    text-decoration: none;
+  text-decoration: none;
 }
 
 .container {
-    padding: 0 30px;
+  padding: 0 30px;
 }
 
 h1, h2, h3, h4, h5, h6 {
-    font-weight: 700;
-    color: var(--main-color);
+  font-weight: 700;
+  color: var(--main-color);
 }
 
+[dir="rtl"] .button-container {
+  left: 1rem;
+  right: auto;
+}
 
+[dir="ltr"] .button-container {
+  right: 1rem;
+  left: auto;
+}
+
+[dir="rtl"] .section .text::after {
+  right: -15px;
+}
+[dir="ltr"] .section .text::after {
+  left: -15px;
+}

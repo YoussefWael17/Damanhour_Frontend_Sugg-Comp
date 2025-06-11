@@ -1,35 +1,36 @@
 <nav class="navbar">
   <div class="logo">
     <img src="/جامعة_دمنهور.png" alt="شعار جامعة دمنهور" />
-    <span class="university-name"> {{ 'navbar.flag' | translate }} </span>
-  </div>
-  <ul>
-  <ng-container *ngIf="isHomePage(); else notHome">
-    <li><a routerLink="/login">{{ 'navbar.login' | translate }}</a></li>
-    <li><a routerLink="/register"> {{ 'navbar.register' | translate }} </a></li>
-  </ng-container>
+    <span class="university-name">{{ 'navbar.flag' | translate }}</span>
 
-  <ng-template #notHome>
-    <ng-container *ngIf="isSubmitComplaintPage(); else notSubmit">
-      <li><a routerLink="/check-complaint-status">{{ 'navbar.follow' | translate }}</a></li>
-      <li><a routerLink="/complaints-log">{{ 'navbar.records' | translate }}</a></li>
-    </ng-container>
-
-    <ng-template #notSubmit>
-      <ng-container *ngIf="isProfilePage(); else defaultLinks">
-        <li><a routerLink="/submit-complaint">{{ 'navbar.Submit' | translate }}</a></li>
-        <li><a routerLink="/check-complaint-status">{{ 'navbar.follow' | translate }}</a></li>
-        <li><a routerLink="/complaints-log">{{ 'navbar.records' | translate }}</a></li>
+    <!-- الروابط داخل اللوجو عشان تكون بعد اسم الجامعة -->
+    <ul>
+      <ng-container *ngIf="isHomePage(); else notHome">
+        <li><a routerLink="/login">{{ 'navbar.login' | translate }}</a></li>
+        <li><a routerLink="/register">{{ 'navbar.register' | translate }}</a></li>
       </ng-container>
-    </ng-template>
-  </ng-template>
 
-  <ng-template #defaultLinks>
-    <li><a routerLink="/login">تسجيل الدخول</a></li>
-    <li><a routerLink="/register">إنشاء حساب</a></li>
-    <li><a routerLink="/check-complaint-status">متابعة الشكوى</a></li>
-    <li><a routerLink="/complaints-log">سجل الشكاوى</a></li>
-  </ng-template>
-</ul>
+      <ng-template #notHome>
+        <ng-container *ngIf="isSubmitComplaintPage(); else notSubmit">
+          <li><a routerLink="/check-complaint-status">{{ 'navbar.follow' | translate }}</a></li>
+          <li><a routerLink="/complaints-log">{{ 'navbar.records' | translate }}</a></li>
+        </ng-container>
 
+        <ng-template #notSubmit>
+          <ng-container *ngIf="isProfilePage(); else defaultLinks">
+            <li><a routerLink="/submit-complaint">{{ 'navbar.Submit' | translate }}</a></li>
+            <li><a routerLink="/check-complaint-status">{{ 'navbar.follow' | translate }}</a></li>
+            <li><a routerLink="/complaints-log">{{ 'navbar.records' | translate }}</a></li>
+          </ng-container>
+        </ng-template>
+      </ng-template>
+
+      <ng-template #defaultLinks>
+        <li><a routerLink="/login">تسجيل الدخول</a></li>
+        <li><a routerLink="/register">إنشاء حساب</a></li>
+        <li><a routerLink="/check-complaint-status">متابعة الشكوى</a></li>
+        <li><a routerLink="/complaints-log">سجل الشكاوى</a></li>
+      </ng-template>
+    </ul>
+  </div>
 </nav>

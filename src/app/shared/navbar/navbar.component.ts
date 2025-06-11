@@ -33,5 +33,6 @@ export class NavbarComponent {
   isProfilePage() {
   return this.router.url === '/profile';
 }
+
 }
 
