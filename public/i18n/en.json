@@ -107,13 +107,17 @@
 "download":":Upload an attachment (optional)",
 "send":"Register a complaint",
 "show":"To view the complaint log",
-"sector1":"Education and Student Affairs Sector",
-"sector2":"University Administration Sector",
-"sector3":"Graduate Studies Sector",
-"sector4":"University Secretary-General Sector",
-"sector5":"Community Service Sector",
-"type1":"Complaint",
-"type2":"Suggestion"
+
+
+"sector1": "Education and Student Affairs Sector",
+"sector2": "Community Service and Environmental Development Sector",
+"sector3": "Postgraduate Studies Sector",
+"sector4": "University Secretary-General Sector",
+"sector5": "University Administration Sector",
+
+"type1": "Suggestion",
+"type2": "Complaint"
+
 
 },
 

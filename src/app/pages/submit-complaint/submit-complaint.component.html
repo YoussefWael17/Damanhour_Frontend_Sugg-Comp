@@ -1,65 +1,75 @@
+<!-- Main Heading -->
 <div class="main-heading">
-  <h1> {{ 'submit-complaint.title' | translate}} </h1>
+  <h1>{{ 'submit-complaint.title' | translate }}</h1>
 </div>
 
+<!-- Sub Heading Section -->
 <div class="section">
   <div class="container">
     <div class="content">
       <div class="text">
-        <h1> {{ 'submit-complaint.sub_title' | translate}} </h1>
+        <h1>{{ 'submit-complaint.sub_title' | translate }}</h1>
       </div>
     </div>
   </div>
 </div>
 
+<!-- Complaint Form -->
 <div class="complaint-form">
-  <form #complaintForm="ngForm" (ngSubmit)="onSubmit(complaintForm)" novalidate>
+  <form [formGroup]="complaintForm" (ngSubmit)="onSubmit()" novalidate>
 
-    <label for="email"> {{ 'submit-complaint.address' | translate}} </label>
-    <input
-      type="email"
-      id="email"
-      name="email"
-      required
-      placeholder=" {{ 'submit-complaint.enter_address' | translate}} "
-      ngModel
-    />
+    <!-- Title -->
+    <label for="title">{{ 'submit-complaint.title' | translate }}</label>
+    <input type="text" id="title" formControlName="title" [class.is-invalid]="submitted && f['title'].invalid" />
+    <div *ngIf="submitted && f['title'].invalid" class="invalid-feedback">العنوان مطلوب</div>
 
-    <label for="college"> {{ 'submit-complaint.sector' | translate}} </label>
-    <select id="college" name="college" required ngModel>
-      <option value="" disabled selected> {{ 'submit-complaint.enter_sector' | translate}} </option>
-      <option value="قطاع شئون التعليم و الطلاب"> {{ 'submit-complaint.sector1' | translate}} </option>
-      <option value="قطاع ادارة الجامعة">{{ 'submit-complaint.sector2' | translate}}</option>
-      <option value="قطاع الدراسات العليا">{{ 'submit-complaint.sector3' | translate}}</option>
-      <option value="قطاع امين عام الجامعة">{{ 'submit-complaint.sector4' | translate}}</option>
-      <option value="قطاع خجمة المجتمع">{{ 'submit-complaint.sector5' | translate}}</option>
+    <!-- Sector -->
+    <label for="sector">{{ 'submit-complaint.sector' | translate }}</label>
+    <select id="sector" formControlName="sector" [class.is-invalid]="submitted && f['sector'].invalid">
+      <option value="" disabled selected>{{ 'submit-complaint.enter_sector' | translate }}</option>
+      <option value="قطاع شئون التعليم والطلاب">{{ 'submit-complaint.sector1' | translate }}</option>
+      <option value="قطاع شئون خدمة المجتمع وتنمية البيئة">{{ 'submit-complaint.sector2' | translate }}</option>
+      <option value="قطاع الدراسات العليا">{{ 'submit-complaint.sector3' | translate }}</option>
+      <option value="قطاع امين عام الجامعه">{{ 'submit-complaint.sector4' | translate }}</option>
+      <option value="قطاع ادارة الجامعه">{{ 'submit-complaint.sector5' | translate }}</option>
     </select>
+    <div *ngIf="submitted && f['sector'].invalid" class="invalid-feedback">القطاع مطلوب</div>
 
-    <label for="complaint-type"> {{ 'submit-complaint.type' | translate}} </label>
-    <select id="complaint-type" name="complaint_type" required ngModel>
-      <option value="" disabled selected>{{ 'submit-complaint.enter_type' | translate}}</option>
-      <option value="شكوى">{{ 'submit-complaint.type1' | translate}}</option>
-      <option value="اقتراح">{{ 'submit-complaint.type2' | translate}}</option>
+    <!-- Type -->
+    <label for="sc_type">{{ 'submit-complaint.type' | translate }}</label>
+    <select id="sc_type" formControlName="sc_type" [class.is-invalid]="submitted && f['sc_type'].invalid">
+      <option value="" disabled selected>{{ 'submit-complaint.enter_type' | translate }}</option>
+      <option value="اقتراح">{{ 'submit-complaint.type1' | translate }}</option>
+      <option value="شكوى">{{ 'submit-complaint.type2' | translate }}</option>
     </select>
+    <div *ngIf="submitted && f['sc_type'].invalid" class="invalid-feedback">النوع مطلوب</div>
 
-    <label for="subject">{{ 'submit-complaint.desc' | translate}}</label>
-    <textarea id="subject" name="subject" required ngModel placeholder="{{ 'submit-complaint.desc_content' | translate}}"></textarea>
+    <!-- Description -->
+    <label for="description">{{ 'submit-complaint.desc' | translate }}</label>
+    <textarea id="description" formControlName="description" placeholder="{{ 'submit-complaint.desc_content' | translate }}" [class.is-invalid]="submitted && f['description'].invalid"></textarea>
+    <div *ngIf="submitted && f['description'].invalid" class="invalid-feedback">الوصف مطلوب</div>
 
-    <label for="file-upload">{{ 'submit-complaint.download' | translate}}</label>
-    <input
-      type="file"
-      id="file-upload"
-      name="file"
-      accept=".pdf,.doc,.docx,.jpg,.png,.jpeg"
-      (change)="onFileSelected($event)"
-    />
+    <!-- File Upload -->
+    <label for="file-upload">{{ 'submit-complaint.download' | translate }}</label>
+    <input type="file" id="file-upload" (change)="onFileSelected($event)" accept=".pdf,.doc,.docx,.jpg,.png,.jpeg" />
 
-    <button type="submit">{{ 'submit-complaint.send' | translate}}</button>
+    <!-- Submit Button -->
+    <button type="submit" [disabled]="isLoading">
+      <span *ngIf="!isLoading">{{ 'submit-complaint.send' | translate }}</span>
+      <span *ngIf="isLoading">جاري الإرسال...</span>
+    </button>
+
+    <!-- Message -->
+    <div class="form-message" *ngIf="formMessage">
+      {{ formMessage }}
+    </div>
+
+    <!-- Log Button -->
+    <div style="text-align: center; margin-top: 40px;">
+      <a routerLink="/complaints-log" class="log-button" aria-label="عرض سجل الشكاوى">
+        📋 {{ 'submit-complaint.show' | translate }}
+      </a>
+    </div>
+
   </form>
-
-  <div class="form-message" *ngIf="formMessage">{{ formMessage }}</div>
-
-  <div style="text-align: center; margin-top: 40px;">
-    <a routerLink="/complaints-log" class="log-button" aria-label="عرض سجل الشكاوى">📋{{ 'submit-complaint.show' | translate}}</a>
-  </div>
 </div>

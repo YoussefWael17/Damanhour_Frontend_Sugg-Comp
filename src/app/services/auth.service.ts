@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { tap } from 'rxjs';
 
 @Injectable({
@@ -10,7 +10,7 @@ export class AuthService {
 
   constructor(private http: HttpClient) {}
 
-  // تسجيل الدخول
+  
   login(email: string, password: string) {
     return this.http.post(`${this.apiUrl}auth/login/`, { email, password }).pipe(
       tap((response: any) => {
@@ -31,6 +31,44 @@ export class AuthService {
       })
     );
   }
+
+  createSuggestion(
+  title: string,
+  sector: string,
+  description: string,
+  attachments: File | null,
+  sc_type: string
+) {
+  const formData = new FormData();
+    formData.append('title', title);
+    formData.append('sector', sector);
+    formData.append('description', description);
+    formData.append('sc_type', sc_type);
+
+    if (attachments) {
+    formData.append('attachments', attachments);
+  }
+
+  const token = localStorage.getItem('auth_token'); // أو من AuthService
+  const headers = new HttpHeaders({
+    Authorization: `Bearer ${token}`
+  });
+
+
+  let endpoint = 'suggestion/'; // القيمة الافتراضية
+
+  if (sc_type === 'شكوى') {
+    endpoint = 'complaint/';
+  } else if (sc_type === 'اقتراح') {
+    endpoint = 'suggestion/';
+  }
+
+  return this.http.post(`${this.apiUrl}${endpoint}`, formData, { headers }).pipe(
+    tap(() => console.log(`${sc_type} Created Successfully`))
+  );
+
+}
+
 
   // التحقق من حالة التسجيل
   isLoggedIn(): boolean {
