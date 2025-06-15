@@ -1,38 +1,149 @@
 import { TranslateModule } from '@ngx-translate/core';
 import { Component } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { FormsModule } from '@angular/forms';
-import { RouterModule , Router } from '@angular/router';
+import { 
+  FormBuilder, 
+  FormGroup, 
+  Validators 
+} from '@angular/forms';
+import { RouterModule, Router } from '@angular/router';
+import { ReactiveFormsModule } from '@angular/forms';
+import { AuthService } from '../../services/auth.service';
+
 
 @Component({
   selector: 'app-register',
   standalone: true,
-  imports: [CommonModule, FormsModule, RouterModule , TranslateModule],
+  imports: [CommonModule, RouterModule,TranslateModule, CommonModule, ReactiveFormsModule],
   templateUrl: './register.component.html',
   styleUrls: ['./register.component.css']
 })
 export class RegisterComponent {
-  showPassword: boolean = false;
+  registerForm: FormGroup;
+  showPassword = false;
+  submitted = false;
+  isLoading = false;
+  errorMessage = '';
 
-  constructor(private router: Router) {}
+  constructor(
+    private fb: FormBuilder,
+    private authService: AuthService,
+    private router: Router
+  ) {
+    this.registerForm = this.fb.group({
+      username: ['', [
+        Validators.required,
+        Validators.pattern(/^\s*[\p{L}]{2,}(\s+[\p{L}]{2,}){2,}\s*$/u)
+      ]],
+      email: ['', [Validators.required, Validators.email]],
+      password: ['', [Validators.required, Validators.minLength(6)]],
+      national_id: [null, [Validators.required, Validators.pattern(/^\d{14}$/)]],
+      phone: [null, [Validators.required, Validators.pattern(/^01[0125]\d{8}$/)]],
+      faculty: ['', Validators.required],
+      agree_terms: [false, Validators.requiredTrue],
+      adjective: ['', Validators.required]
+    });
+
+  }
+
+  get f() { return this.registerForm.controls; }
 
   togglePassword(): void {
     this.showPassword = !this.showPassword;
   }
 
-  onSubmit(form: any): void {
-    if (form.valid) {
-      console.log('Form Submitted!', form.value);
-      this.router.navigateByUrl('/profile');
-    } else {
-      console.log('Form is invalid');
-    }
+//   onSubmit() {
+//   console.log('onSubmit called');
+//   console.log(this.registerForm.value);
+
+//   this.submitted = true;
+//   this.errorMessage = '';
+
+//   if (this.registerForm.invalid) {
+//     this.errorMessage = 'يوجد أخطاء في النموذج';
+//     return;
+//   }
+
+//   this.isLoading = true;
+  
+//   const formValue = this.registerForm.value;
+
+//   this.authService.register(
+//     formValue.username,
+//     formValue.email,
+//     formValue.national_id,
+//     formValue.phone,
+//     formValue.faculty,
+//     formValue.agree_terms,
+//     formValue.password,
+//     formValue.adjective
+//   ).subscribe({
+//     next: () => {
+//       this.router.navigate(['/login']); // غيرها للصفحة اللي عايز تروحها بعد التسجيل
+//     },
+//     error: (err) => {
+//       this.errorMessage = err.error?.message || 'فشل في عملية التسجيل';
+//       this.isLoading = false;
+//     },
+//     complete: () => {
+//       this.isLoading = false;
+//     }
+//   });
+// }
+
+onSubmit() {
+  this.submitted = true;
+  this.errorMessage = '';
+
+  if (this.registerForm.invalid) {
+    this.errorMessage = 'يوجد أخطاء في النموذج';
+    return;
   }
 
-  allowOnlyNumbers(event: KeyboardEvent): void {
-    const charCode = event.key.charCodeAt(0);
-    if (charCode < 48 || charCode > 57) {
-      event.preventDefault();
+  this.isLoading = true;
+
+  const {
+    username,
+    email,
+    password,
+    national_id,
+    phone,
+    faculty,
+    agree_terms,
+    adjective
+  } = this.registerForm.value;
+
+  console.log('Sending to backend:', this.registerForm.value); // ⬅️ للمراجعة
+
+  this.authService.register(
+    username,
+    email,
+    national_id,
+    phone,
+    faculty,
+    agree_terms,
+    password,
+    adjective
+  ).subscribe({
+    next: () => {
+      this.router.navigate(['/login']);
+    },
+    error: (err) => {
+      console.error('Registration error:', err); // ⬅️ دي هتظهر الخطأ الحقيقي
+      this.errorMessage = err.error?.message || 'فشل التسجيل';
+      this.isLoading = false;
+    },
+    complete: () => {
+      this.isLoading = false;
     }
-  }
+  });
 }
+
+}
+
+
+
+
+
+
+

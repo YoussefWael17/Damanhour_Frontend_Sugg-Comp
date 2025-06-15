@@ -5,45 +5,83 @@
   <div class="side-heading">
     <p>{{ 'login.encorage_msg' | translate }}</p>
   </div>
+  
   <div class="login-form">
-    <form #loginForm="ngForm" (ngSubmit)="onSubmit(loginForm)" novalidate>
-      <label for="email">{{ 'login.email' | translate }}</label>
-      <input
-        type="email"
-        id="email"
-        name="email"
-        placeholder="{{ 'login.enter_email' | translate }}"
-        required
-        ngModel
-      />
-
-      <div class="password-input-wrapper">
-        <label for="password">{{ 'login.password' | translate }}</label>
+    <form [formGroup]="loginForm" (ngSubmit)="onSubmit()" novalidate>
+      
+      <!-- حقل البريد الإلكتروني -->
+      <div class="form-group">
+        <label for="email">{{ 'login.email' | translate }}</label>
         <input
-          [type]="showPassword ? 'text' : 'password'"
-          id="password"
-          name="password"
-          placeholder="{{ 'login.enter_pas' | translate }}"
-          required
-          ngModel
+          type="email"
+          id="email"
+          formControlName="email"
+          class="form-control"
+          placeholder="{{ 'login.enter_email' | translate }}"
+          [class.is-invalid]="submitted && f['email'].errors"
         />
-        <i
-          class="fa"
-          (click)="togglePassword()"
-          [ngClass]="showPassword ? 'fa-eye' : 'fa-eye-slash'"
-          style="cursor:pointer"
-        ></i>
+        <div *ngIf="submitted && f['email'].errors" class="invalid-feedback">
+          <div *ngIf="f['email'].errors['required']">{{ 'validation.email_required' | translate }}</div>
+          <div *ngIf="f['email'].errors['email']">{{ 'validation.email_invalid' | translate }}</div>
+        </div>
       </div>
 
+      <!-- حقل كلمة المرور -->
+      <div class="form-group password-input-wrapper">
+        <label for="password">{{ 'login.password' | translate }}</label>
+        <div class="input-group">
+          <input
+            [type]="showPassword ? 'text' : 'password'"
+            id="password"
+            formControlName="password"
+            class="form-control"
+            placeholder="{{ 'login.enter_pas' | translate }}"
+            [class.is-invalid]="submitted && f['password'].errors"
+          />
+          <div class="input-group-append">
+            <span class="input-group-text" (click)="togglePassword()">
+              <i class="fa" [ngClass]="showPassword ? 'fa-eye' : 'fa-eye-slash'"></i>
+            </span>
+          </div>
+        </div>
+        <div *ngIf="submitted && f['password'].errors" class="invalid-feedback">
+          <div *ngIf="f['password'].errors['required']">{{ 'validation.password_required' | translate }}</div>
+          <div *ngIf="f['password'].errors['minlength']">
+            {{ 'validation.password_minlength' | translate }}
+          </div>
+        </div>
+      </div>
+
+      <!-- نسيت كلمة المرور -->
       <div class="forgot-password">
-  <a routerLink="/forget-password">{{ 'login.forget_question' | translate }}</a>
-</div>
+        <a routerLink="/forget-password">{{ 'login.forget_question' | translate }}</a>
+      </div>
 
+      <!-- زر التسجيل -->
+      <button 
+        type="submit" 
+        class="btn btn-primary btn-block"
+        [disabled]="isLoading || loginForm.invalid"
+      >
+        <span *ngIf="!isLoading">{{ 'login.login_btn' | translate }}</span>
+        <span *ngIf="isLoading">
+          <span class="spinner-border spinner-border-sm" role="status" aria-hidden="true"></span>
+          {{ 'login.loading' | translate }}
+        </span>
+      </button>
 
-      <button type="submit">{{ 'login.end_reg' | translate }}</button>
+      <!-- رسائل الخطأ -->
+      <div *ngIf="errorMessage" class="alert alert-danger mt-3">
+        {{ errorMessage }}
+      </div>
     </form>
   </div>
+
+  <!-- رابط إنشاء حساب -->
   <div class="no-account">
-  <a routerLink="/register" class="no-account-link">{{ 'login.question' | translate }}</a>
+    <p>{{ 'login.no_account' | translate }} <a routerLink="/register" class="register-link">{{ 'login.register_here' | translate }}</a></p>
+  </div>
 </div>
-</div>
+
+
+

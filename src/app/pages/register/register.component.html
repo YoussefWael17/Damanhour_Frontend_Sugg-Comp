@@ -13,75 +13,123 @@
 </div>
 
 <div class="complaint-form">
-  <form (ngSubmit)="onSubmit(registerForm)" #registerForm="ngForm">
-    <label for="full-name">{{ 'register.full_name' | translate }}</label>
-    <input type="text" id="full-name" name="full_name" placeholder="{{ 'register.enter_name' | translate }}" ngModel required />
-    <label for="national-id">{{ 'register.national_id' | translate }}</label>
-    <input type="text" id="national-id" name="national_id" placeholder="{{ 'register.enter_nid' | translate }}" ngModel required
-      pattern="[0-9]{14}" maxlength="14" inputmode="numeric" (keypress)="allowOnlyNumbers($event)" />
-    <div *ngIf="registerForm.submitted && registerForm.controls['national_id']?.invalid" class="error-message">
-      الرقم القومي يجب أن يتكون من 14 رقمًا.
+  <form [formGroup]="registerForm" (ngSubmit)="onSubmit()" novalidate>
+    
+    <!-- Username -->
+    <label for="username">{{ 'register.full_name' | translate }}</label>
+    <input type="text" id="username" formControlName="username" [class.is-invalid]="submitted && f['username'].invalid" placeholder="{{ 'register.enter_name' | translate }}" />
+    <div *ngIf="submitted && f['username'].invalid" class="invalid-feedback">
+      <div *ngIf="f['username'].errors?.['required']">الاسم مطلوب</div>
+      <div *ngIf="f['username'].errors?.['pattern']">الاسم يجب أن يكون ثلاثيًا على الأقل</div>
     </div>
 
-    <label for="email">{{ 'register.email' | translate }}</label>
-    <input type="email" id="email" name="email" placeholder="{{ 'register.enter_email' | translate }}" ngModel required />
+    <!-- National Id -->
+    <label for="national_id">{{ 'register.national_id' | translate }}</label>
+      <input type="text" id="national_id" formControlName="national_id" [class.is-invalid]="submitted && f['national_id'].invalid" placeholder="{{ 'register.enter_nid' | translate }}"/>
+      <div *ngIf="submitted && f['national_id'].invalid" class="invalid-feedback">
+        <div *ngIf="f['national_id'].errors?.['required']">الرقم القومي مطلوب</div>
+        <div *ngIf="f['national_id'].errors?.['pattern']">يجب أن يكون الرقم القومي 14 رقمًا</div>
+      </div>
 
-    <label for="phone">{{ 'register.phone_number' | translate }}</label>
-    <input type="tel" id="phone" name="phone" placeholder="{{ 'register.enter_number' | translate }}" ngModel required pattern="[0-9]{11}"
-      maxlength="11" inputmode="numeric" (keypress)="allowOnlyNumbers($event)" />
+      <!-- Email -->
+      <label for="email">{{ 'register.email' | translate }}</label>
+      <input type="email" id="email" formControlName="email" [class.is-invalid]="submitted && f['email'].invalid" placeholder="{{ 'register.enter_email' | translate }}" />
+      <div *ngIf="submitted && f['email'].invalid" class="invalid-feedback">
+        <div *ngIf="f['email'].errors?.['required']">البريد الإلكتروني مطلوب</div>
+        <div *ngIf="f['email'].errors?.['email']">صيغة البريد غير صحيحة</div>
+      </div>
+    
+      <!-- Phone -->
+      <label for="phone">{{ 'register.phone_number' | translate }}</label>
+      <input type="text" id="phone" formControlName="phone" [class.is-invalid]="submitted && f['phone'].invalid" placeholder="{{ 'register.enter_number' | translate }}" />
+      <div *ngIf="submitted && f['phone'].invalid" class="invalid-feedback">
+        <div *ngIf="f['phone'].errors?.['required']">رقم الهاتف مطلوب</div>
+        <div *ngIf="f['phone'].errors?.['pattern']">صيغة رقم الهاتف غير صحيحة</div>
+      </div>
+    
+      <!-- Faculty -->
+      <label for="faculty">{{ 'register.uni' | translate }}</label>
+      <select id="faculty" formControlName="faculty" [class.is-invalid]="submitted && f['faculty'].invalid" >
+        <option value="" disabled selected>{{ 'register.enter_uni' | translate }}</option>
+        <option value="كلية الحاسبات والمعلومات">{{ 'register.uni1' | translate }}</option>
+        <option value="كلية الهندسة">{{ 'register.uni2' | translate }}</option>
+        <option value="كلية العلوم">{{ 'register.uni3' | translate }}</option>
+        <option value="كلية الصيدلة">{{ 'register.uni4' | translate }}</option>
+        <option value="كلية الطب البيطرى">{{ 'register.uni5' | translate }}</option>
+        <option value="كلية التربية">{{ 'register.uni6' | translate }}</option>
+        <option value="كلية الزراعة">{{ 'register.uni7' | translate }}</option>
+        <option value="كلية التجارة">{{ 'register.uni8' | translate }}</option>
+        <option value="كلية الحقوق">{{ 'register.uni9' | translate }}</option>
+        <option value="كلية الآداب">{{ 'register.uni10' | translate }}</option>
+        <option value="كلية التربية الطفولة المبكرة">{{ 'register.uni11' | translate }}</option>
+        <option value="كلية الفنون التطبيقية">{{ 'register.uni12' | translate }}</option>
+        <option value="كلية التربية النوعية">{{ 'register.uni13' | translate }}</option>
+        <option value="كلية التمريض">{{ 'register.uni14' | translate }}</option>
+      </select>
+      <div *ngIf="submitted && f['faculty'].invalid" class="invalid-feedback">
+        الكلية مطلوبة
+      </div>
 
-    <div class="password-input-wrapper">
-      <label for="password">{{ 'register.password' | translate }}</label>
-      <input [type]="showPassword ? 'text' : 'password'" id="password" name="password" ngModel required
-        aria-required="true" />
-      <i class="fa password-toggle" [ngClass]="showPassword ? 'fa-eye' : 'fa-eye-slash'" (click)="togglePassword()"
-        aria-label="Toggle Password Visibility" role="button" tabindex="0" (keydown.enter)="togglePassword()"></i>
-    </div>
+      <!-- Agree Terms -->
+      <div class="form-group form-check">
+      <input type="checkbox" id="agree_terms" formControlName="agree_terms" [class.is-invalid]="submitted && f['agree_terms'].invalid"/>
+      <label class="form-check-label" for="agree_terms"> {{ 'register.confirm' | translate }}</label>
+      <div *ngIf="submitted && f['agree_terms'].invalid" class="invalid-feedback">
+        يجب الموافقة على الشروط
+      </div>
 
-
-    <label for="role">{{ 'register.status' | translate }}</label>
-    <select id="role" name="role" ngModel required>
-      <option value="" disabled selected>{{ 'register.enter_status' | translate }}</option>
-      <option value="student">{{ 'register.status1' | translate }}</option>
-      <option value="faculty_member">{{ 'register.status2' | translate }}</option>
-      <option value="government_employee">{{ 'register.status3' | translate }}</option>
-      <option value="other">{{ 'register.status4' | translate }}</option>
-    </select>
-
-    <label for="college">{{ 'register.uni' | translate }}</label>
-    <select id="college" name="college" ngModel required>
-      <option value="" disabled selected>{{ 'register.enter_uni' | translate }}</option>
-      <option value="arts">{{ 'register.uni1' | translate }}</option>
-      <option value="science">{{ 'register.uni2' | translate }}</option>
-      <option value="engineering">{{ 'register.uni3' | translate }}</option>
-      <option value="medicine"> {{ 'register.uni4' | translate }}</option>
-      <option value="Education"> {{ 'register.uni5' | translate }}</option>
-        <option value="Agriculture"> {{ 'register.uni6' | translate }}</option>
-          <option value="Commerce"> {{ 'register.uni7' | translate }}</option>
-            <option value="Nursing">{{ 'register.uni8' | translate }}</option>
-              <option value="Pharmacy"> {{ 'register.uni9' | translate }}</option>
-                <option value="Computers and Information."> {{ 'register.uni10' | translate }}</option>
-                <option value="Special Education"> {{ 'register.uni11' | translate }}</option>
-    </select>
-
-    <div class="checkbox-wrapper">
-      <label>
-        <input type="checkbox" name="terms" ngModel required />
-<a href="#">{{ 'register.confirm' | translate }}</a>
-      </label>
-      <div *ngIf="registerForm.submitted && registerForm.controls['terms']?.invalid" class="error-message">
-        يجب الموافقة على سياسة الاستخدام.
+      <!-- Password -->
+      <div class="password-input-wrapper">
+      <label for="password">{{'register.password' | translate }}</label>
+      <input [type]="showPassword ? 'text' : 'password'" id="password" formControlName="password" class="form-control" [class.is-invalid]="submitted && f['password'].invalid" placeholder="{{ 'register.password' | translate }}" />
+      <i class="fa" (click)="togglePassword()" [ngClass]="showPassword ? 'fa-eye' : 'fa-eye-slash'" style="cursor:pointer"></i>
+      <div *ngIf="submitted && f['password'].invalid" class="invalid-feedback">
+        <div *ngIf="f['password'].errors?.['required']">كلمة المرور مطلوبة</div>
+        <div *ngIf="f['password'].errors?.['minlength']">
+          يجب أن تكون كلمة المرور 6 أحرف على الأقل
+        </div>
       </div>
     </div>
 
-    <button type="submit" [disabled]="!registerForm.valid">{{ 'register.end_reg' | translate }}</button>
-  </form>
 
-  <div class="form-message">
-    {{ 'register.notice' | translate }}
-  </div>
+    <div class="form-group">
+      <label for="adjective">{{ 'register.status' | translate }}</label>
+      <select
+        id="adjective" formControlName="adjective" [class.is-invalid]="submitted && f['adjective'].invalid">
+        <option value="" disabled selected>{{ 'register.enter_adjective' | translate }}</option>
+        <!-- <option value="موظف إداري">{{ 'register.status1' | translate }}</option> -->
+        <option value="أستاذ">{{ 'register.status2' | translate }}</option>
+        <option value="موظف">{{ 'register.status3' | translate }}</option>
+        <option value="باحث">{{ 'register.status4' | translate }}</option>
+        <option value="خريج">{{ 'register.status5' | translate }}</option>
+        <option value="طالب">{{ 'register.status6' | translate }}</option>
+      </select>
+      <div *ngIf="submitted && f['adjective'].invalid" class="invalid-feedback">
+        الصفة مطلوبة
+      </div>
+    </div>
 
+    
+    <button type="submit" class="btn btn-primary w-100" [disabled]="isLoading">
+      <span *ngIf="!isLoading">{{ 'register.end_reg' | translate }}</span>
+      <span *ngIf="isLoading">
+        <span class="spinner-border spinner-border-sm" role="status" aria-hidden="true"></span>
+        جاري التسجيل...
+      </span>
+    </button>
+
+  
+
+    <div *ngIf="errorMessage" class="alert alert-danger mt-3">
+      {{ 'register.notice' | translate }}
+    </div>
+  
   <div style="text-align: center;">
     <a routerLink="/login" class="log-button">{{ 'register.question' | translate }}</a>
   </div>
+</div>
+
+
+
+  </form>
 </div>

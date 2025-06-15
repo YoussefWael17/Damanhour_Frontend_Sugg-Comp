@@ -9,6 +9,7 @@ import { ForgetPasswordComponent } from './pages/forget-password/forget-password
 import { CheckComplaintStatusComponent } from './pages/check-complaint-status/check-complaint-status.component';
 import { ComplaintsLogComponent } from './pages/complaints-log/complaints-log.component';
 import { ProfileComponent } from './pages/profile/profile.component';
+import { AuthGuard } from './guards/auth.guard';
 
 export const routes: Routes = [
   {
@@ -17,7 +18,7 @@ export const routes: Routes = [
     children: [
       { path: '', component: HomeComponent },
       { path: 'submit-complaint', component: SubmitComplaintComponent },
-      { path: 'profile', component: ProfileComponent }
+      { path: 'profile', component: ProfileComponent, canActivate: [AuthGuard] }
     ]
   },
   { path: 'register', component: RegisterComponent },
@@ -26,4 +27,7 @@ export const routes: Routes = [
   { path: 'check-complaint-status', component: CheckComplaintStatusComponent },
   { path: 'complaints-log', component: ComplaintsLogComponent }
 ];
+
+
+
 
