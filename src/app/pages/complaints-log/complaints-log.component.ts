@@ -1,14 +1,17 @@
-import { TranslateModule } from '@ngx-translate/core';
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { RouterModule } from '@angular/router';
+import { TranslateModule } from '@ngx-translate/core';
+import { AuthService } from '../../services/auth.service'; // تأكد من المسار الصحيح
+import { HttpClientModule } from '@angular/common/http';
 
 interface Complaint {
   id: number;
-  type: string;
-  date: string;
+  title: string;
+  sc_type: string; // شكوى أو اقتراح
   status: 'done' | 'pending' | 'rejected';
 }
+
 
 @Component({
   selector: 'app-complaints-log',
@@ -17,12 +20,45 @@ interface Complaint {
   templateUrl: './complaints-log.component.html',
   styleUrls: ['./complaints-log.component.css']
 })
-export class ComplaintsLogComponent {
-  complaints: Complaint[] = [
-    { id: 1, type: 'مشكلة في الإنترنت', date: '10 مايو 2025', status: 'done' },
-    { id: 2, type: 'طلب دعم فني', date: '9 مايو 2025', status: 'pending' },
-    { id: 3, type: 'تعديل بريد إلكتروني', date: '7 مايو 2025', status: 'rejected' },
-    { id: 4, type: 'مشكلة بنتائج الامتحانات', date: '6 مايو 2025', status: 'done' },
-    { id: 5, type: 'اقتراح تطوير الموقع', date: '5 مايو 2025', status: 'pending' }
-  ];
+export class ComplaintsLogComponent implements OnInit {
+  complaints: Complaint[] = [];
+  isLoading = true;
+  errorMessage = '';
+
+  constructor(private authService: AuthService) {}
+
+  sc_type: string = 'شكوى'; // أو 'اقتراح'
+
+ngOnInit() {
+  this.loadSuggestions();
 }
+
+changeType(type: string) {
+    if (this.sc_type !== type) {
+      this.sc_type = type;
+      this.loadSuggestions();
+    }
+  }
+
+loadSuggestions() {
+  this.authService.getSuggestions(this.sc_type).subscribe({
+    next: (data: any) => {
+      this.complaints = data;
+      this.isLoading = false;
+    },
+    error: (err) => {
+      this.errorMessage = 'فشل في تحميل البيانات.';
+      console.error(err);
+      this.isLoading = false;
+    }
+  });
+}
+
+}
+
+
+
+
+
+
+

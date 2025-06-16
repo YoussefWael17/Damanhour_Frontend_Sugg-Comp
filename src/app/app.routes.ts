@@ -11,6 +11,8 @@ import { ComplaintsLogComponent } from './pages/complaints-log/complaints-log.co
 import { ProfileComponent } from './pages/profile/profile.component';
 import { AuthGuard } from './guards/auth.guard';
 import { EditProfileComponent } from './pages/edit-profile/edit-profile.component';
+import { EditComplaintComponent } from './pages/edit-complaint/edit-complaint.component';
+import { SpecificComplaintComponent } from './pages/specific-complaint/specific-complaint.component';
 
 export const routes: Routes = [
   {
@@ -20,7 +22,9 @@ export const routes: Routes = [
       { path: '', component: HomeComponent },
       { path: 'submit-complaint', component: SubmitComplaintComponent },
       { path: 'profile', component: ProfileComponent, canActivate: [AuthGuard] },
-      { path: 'profile/edit', component: EditProfileComponent }
+      { path: 'profile/edit', component: EditProfileComponent },
+      { path: 'complaint/edit', component: EditComplaintComponent },
+      { path: 'complaint/details/:id/:sc_type', component: SpecificComplaintComponent },
     ]
   },
   { path: 'register', component: RegisterComponent },

@@ -1,0 +1,26 @@
+<div *ngIf="isLoading">
+  جاري التحميل...
+</div>
+
+<div *ngIf="errorMessage">
+  <p class="error-message">{{ errorMessage }}</p>
+</div>
+
+<div class="detail-container" *ngIf="suggestion && !isLoading">
+  <h2>{{ suggestion.title }}</h2>
+
+  <p><strong>القطاع:</strong> {{ suggestion.sector }}</p>
+  <p><strong>النوع:</strong> {{ suggestion.sc_type }}</p>
+  <p><strong>الوصف:</strong></p>
+  <p>{{ suggestion.description }}</p>
+
+  <div *ngIf="suggestion.attachments">
+    <strong>المرفق:</strong>
+    <a [href]="suggestion.attachments" target="_blank" download>
+      {{ suggestion.attachmentsName || 'تحميل الملف' }}
+    </a>
+  </div>
+
+  <button (click)="goBack()">عودة</button>
+</div>
+

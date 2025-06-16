@@ -1,29 +1,45 @@
 <div class="complaint-history container">
-  <h1> {{ 'complaints-log.title' | translate }} </h1>
+  <h1>{{ 'complaints-log.title' | translate }}</h1>
 
-  <table class="complaints-table">
+  <!-- الفلتر -->
+  <div class="filter-buttons">
+    <button [class.active]="sc_type === 'شكوى'" (click)="changeType('شكوى')">شكاوى</button>
+    <button [class.active]="sc_type === 'اقتراح'" (click)="changeType('اقتراح')">اقتراحات</button>
+  </div>
+
+  <!-- جدول -->
+  <table class="complaints-table" *ngIf="!isLoading && complaints.length">
     <thead>
       <tr>
-        <th> {{ 'complaints-log.number' | translate }}</th>
-        <th> {{ 'complaints-log.type' | translate }}</th>
-        <th> {{ 'complaints-log.date' | translate }}</th>
-        <th> {{ 'complaints-log.status' | translate }}</th>
+        <th>الرقم</th>
+        <th>العنوان</th>
+        <th>النوع</th>
+        <th>الحالة</th>
+        <th>تفاصيل</th>
       </tr>
     </thead>
     <tbody>
       <tr *ngFor="let complaint of complaints">
         <td>{{ complaint.id }}</td>
-        <td>{{ complaint.type }}</td>
-        <td>{{ complaint.date }}</td>
+        <td>{{ complaint.title }}</td>
+        <td>{{ complaint.sc_type }}</td>
         <td class="status"
             [class.done]="complaint.status === 'done'"
             [class.pending]="complaint.status === 'pending'"
             [class.rejected]="complaint.status === 'rejected'">
           {{ complaint.status === 'done' ? 'تم الرد' : complaint.status === 'pending' ? 'قيد الانتظار' : 'تم الرفض' }}
         </td>
+        <td>
+          <a [routerLink]="['/complaint/details', complaint.id, complaint.sc_type]" class="details-link">عرض</a>
+        </td>
       </tr>
     </tbody>
   </table>
 
-  <a routerLink="/submit-complaint" class="back-button"> {{ 'complaints-log.back' | translate }}</a>
+  <!-- تحميل أو خطأ -->
+  <p *ngIf="isLoading">جاري التحميل...</p>
+  <p class="error-message" *ngIf="errorMessage">{{ errorMessage }}</p>
+  <p *ngIf="!isLoading && complaints.length === 0">لا توجد بيانات.</p>
+
+  <a routerLink="/submit-complaint" class="back-button">{{ 'complaints-log.back' | translate }}</a>
 </div>

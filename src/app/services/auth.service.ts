@@ -66,8 +66,61 @@ export class AuthService {
   return this.http.post(`${this.apiUrl}${endpoint}`, formData, { headers }).pipe(
     tap(() => console.log(`${sc_type} Created Successfully`))
   );
-
 }
+
+
+getSuggestionById(id: number, sc_type: string) {
+  const token = localStorage.getItem('auth_token');
+  const headers = new HttpHeaders({
+    Authorization: `Bearer ${token}`
+  });
+
+  let endpoint = 'suggestion/';
+  if (sc_type === 'شكوى') {
+    endpoint = 'complaint/';
+  }
+
+  return this.http.get(`${this.apiUrl}${endpoint}${id}/`, { headers });
+}
+
+getSuggestions(sc_type: string) {
+  const token = localStorage.getItem('auth_token');
+  const headers = new HttpHeaders({
+    Authorization: `Bearer ${token}`
+  });
+
+  let endpoint = 'suggestion/';
+  if (sc_type === 'شكوى') {
+    endpoint = 'complaint/';
+  }
+
+  return this.http.get(`${this.apiUrl}${endpoint}`, { headers });
+}
+
+
+updateSuggestion(id: number, formData: FormData, sc_type: string) {
+  const token = localStorage.getItem('auth_token');
+
+  const headers = new HttpHeaders({
+    Authorization: `Bearer ${token}`
+  });
+
+  let endpoint = '';
+
+  if (sc_type === 'شكوى') {
+    endpoint = `complaint/${id}/`;
+  } else if (sc_type === 'اقتراح') {
+    endpoint = `suggestion/${id}/`;
+  } else {
+    throw new Error('نوع غير مدعوم');
+  }
+
+  return this.http.put(`${this.apiUrl}${endpoint}`, formData, { headers });
+}
+
+
+
+
 
 getProfile() {
   const token = localStorage.getItem('auth_token');
