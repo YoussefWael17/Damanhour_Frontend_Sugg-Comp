@@ -1,10 +1,13 @@
 <div class="profile container">
   <!-- Header: صورة + اسم + الكلية -->
-  <div class="profile-header">
-    <img src="assets/profile.jpg" alt="Profile" class="profile-image" />
+  <div class="profile-header" *ngIf="profileData">
+    <!-- <img src="assets/profile.jpg" alt="Profile" class="profile-image" /> -->
+      <div *ngIf="profileData.profile_image">
+        <img [src]="profileData.profile_image" alt="Profile Image" class="profile-image" />
+      </div>
     <div class="profile-info">
-      <h2 class="name">أحمد محمد</h2>
-      <p class="faculty">كلية الهندسة</p>
+      <h2 class="name">{{ profileData.username }}</h2>
+      <p class="faculty">{{ profileData.faculty }}</p>
     </div>
   </div>
 
@@ -12,14 +15,28 @@
   <h3 class="section-title">{{ 'profile.info' | translate }}</h3>
 
   <!-- معلومات المستخدم -->
-  <div class="user-details">
-    <p class="detail-item"><strong>{{ 'profile.name' | translate }}</strong> {{ user.fullName }}</p>
-    <p class="detail-item"><strong>{{ 'profile.email' | translate }}</strong> {{ user.email }}</p>
-    <p class="detail-item"><strong>{{ 'profile.faculty' | translate }}</strong> {{ user.college }}</p>
-    <p class="detail-item"><strong>{{ 'profile.phone' | translate }}</strong> {{ user.phone }}</p>
-    <p class="detail-item"><strong>{{ 'profile.status' | translate }}</strong> {{ user.role }}</p>
+  <div *ngIf="profileData"  class="user-details">
+    <p class="detail-item"><strong>{{ 'profile.name' | translate }}</strong> {{ profileData.username }}</p>
+    <p class="detail-item"><strong>{{ 'profile.email' | translate }}</strong> {{ profileData.email }}</p>
+    <p class="detail-item"><strong>{{ 'profile.faculty' | translate }}</strong> {{ profileData.faculty }}</p>
+    <p class="detail-item"><strong>{{ 'profile.phone' | translate }}</strong> {{ profileData.phone }}</p>
+    <p class="detail-item"><strong>{{ 'profile.status' | translate }}</strong> {{ profileData.adjective }}</p>
   </div>
 
   <!-- زر تسجيل الخروج -->
+  <div class="buttons-container">
   <button class="logout-button" (click)="logout()">{{ 'profile.sign out' | translate }}</button>
+  
+  <a routerLink="/profile/edit">
+    <button class="edit-profile-button">Edit Profile</button>
+  </a>
+
+  <button class="delete-button" (click)="onDeleteProfile()">
+    حذف الملف الشخصي
+  </button>
+
 </div>
+
+
+</div>
+

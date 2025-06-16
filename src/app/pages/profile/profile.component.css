@@ -41,8 +41,8 @@
   font-size: 22px;
   margin-bottom: 20px;
   color: #1E427E;
-  border-bottom: 2px solid #FF731D; /* بدل اللون الرمادي */
-  display: inline-block; /* علشان الخط يكون بطول العنوان فقط */
+  border-bottom: 2px solid #FF731D;
+  display: inline-block;
   padding-bottom: 5px;
 }
 
@@ -67,22 +67,44 @@
   font-weight: 700;
 }
 
-.logout-button {
-  margin-top: 30px;
-  padding: 16px 25px;
-  background-color: #c0392b;
-  color: white;
-  border: none;
+.logout-button, .edit-profile-button {
+  padding: 14px 28px;
   border-radius: 8px;
   font-weight: bold;
   cursor: pointer;
   transition: background-color 0.3s ease;
+  font-size: 16px;
+  border: none;
+  color: white;
+  box-shadow: 0 3px 8px rgba(0,0,0,0.1);
+}
+
+.logout-button {
+  background-color: #c0392b;
+  margin-right: 15px; /* مسافة بين الزرين */
 }
 
 .logout-button:hover {
   background-color: #e74c3c;
 }
 
+.edit-profile-button {
+  background-color: #007bff;
+}
+
+.edit-profile-button:hover {
+  background-color: #0056b3;
+}
+
+.buttons-container {
+  margin-top: 30px;
+  display: flex;
+  justify-content: flex-start;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+
+/* استجابة للجوال */
 @media (max-width: 600px) {
   .profile {
     padding: 20px;
@@ -98,7 +120,29 @@
     align-items: center;
   }
 
-  .logout-button {
+  .buttons-container {
+    justify-content: center;
+  }
+
+  .logout-button, .edit-profile-button {
     width: 100%;
+    margin-right: 0;
   }
 }
+
+
+.delete-button {
+  background-color: #c0392b;
+  color: white;
+  border: none;
+  padding: 12px 20px;
+  border-radius: 8px;
+  font-weight: bold;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.delete-button:hover {
+  background-color: #e74c3c;
+}
+

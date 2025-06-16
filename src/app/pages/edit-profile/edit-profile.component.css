@@ -1,0 +1,88 @@
+.edit-profile {
+  background-color: #fff;
+  border-radius: 12px;
+  padding: 40px;
+  box-shadow: 0 0 20px rgba(0, 0, 0, 0.05);
+  max-width: 600px;
+  margin: 40px auto;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  color: #444;
+}
+
+.edit-profile h2 {
+  color: #1E427E;
+  font-size: 28px;
+  margin-bottom: 25px;
+  border-bottom: 2px solid #FF731D;
+  display: inline-block;
+  padding-bottom: 5px;
+}
+
+.form-group {
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 20px;
+}
+
+label {
+  font-weight: 700;
+  color: #1E427E;
+  margin-bottom: 8px;
+  font-size: 16px;
+}
+
+input[type="text"],
+input[type="email"] {
+  padding: 10px 12px;
+  font-size: 16px;
+  border: 1.5px solid #ccc;
+  border-radius: 8px;
+  transition: border-color 0.3s ease;
+}
+
+input[type="text"]:focus,
+input[type="email"]:focus {
+  border-color: #FF731D;
+  outline: none;
+}
+
+.error {
+  color: #c0392b;
+  font-size: 0.9em;
+  margin-top: 5px;
+  font-weight: 600;
+}
+
+button[type="submit"] {
+  background-color: #1E427E;
+  color: white;
+  padding: 14px 0;
+  border: none;
+  border-radius: 10px;
+  font-size: 18px;
+  font-weight: 700;
+  cursor: pointer;
+  width: 100%;
+  transition: background-color 0.3s ease;
+}
+
+button[type="submit"]:disabled {
+  background-color: #7f8c8d;
+  cursor: not-allowed;
+}
+
+button[type="submit"]:hover:not(:disabled) {
+  background-color: #163665;
+}
+
+/* Responsive for smaller screens */
+@media (max-width: 600px) {
+  .edit-profile {
+    padding: 20px;
+    margin: 20px 15px;
+  }
+
+  .edit-profile h2 {
+    font-size: 24px;
+  }
+}

@@ -49,13 +49,13 @@ export class AuthService {
     formData.append('attachments', attachments);
   }
 
-  const token = localStorage.getItem('auth_token'); // أو من AuthService
+  const token = localStorage.getItem('auth_token'); 
   const headers = new HttpHeaders({
     Authorization: `Bearer ${token}`
   });
 
 
-  let endpoint = 'suggestion/'; // القيمة الافتراضية
+  let endpoint = 'suggestion/'; 
 
   if (sc_type === 'شكوى') {
     endpoint = 'complaint/';
@@ -68,6 +68,43 @@ export class AuthService {
   );
 
 }
+
+getProfile() {
+  const token = localStorage.getItem('auth_token');
+  const headers = new HttpHeaders({
+    Authorization: `Bearer ${token}`
+  });
+
+  return this.http.get(`${this.apiUrl}user/profile/`, { headers }).pipe(
+    tap((response: any) => {
+      if (response.username) {
+        localStorage.setItem('profile_username', response.username);
+      }
+    })
+  );
+}
+
+
+
+updateProfile(updatedData: any) {
+  const token = localStorage.getItem('auth_token');
+  const headers = new HttpHeaders({
+    Authorization: `Bearer ${token}`
+  });
+
+  return this.http.put(`${this.apiUrl}user/profile/`, updatedData, { headers });
+}
+
+
+deleteProfile() {
+  const token = localStorage.getItem('auth_token');
+  const headers = new HttpHeaders({
+    Authorization: `Bearer ${token}`
+  });
+
+  return this.http.delete(`${this.apiUrl}user/profile/`, { headers });
+}
+
 
 
   // التحقق من حالة التسجيل

@@ -1,0 +1,64 @@
+<div class="edit-profile container">
+
+  <!-- عنوان الصفحة -->
+  <h2>Edit Profile</h2>
+
+  <!-- الفورم -->
+  <form [formGroup]="profileForm" (ngSubmit)="onSubmit()">
+
+    <div class="form-group">
+      <label for="username">Username:</label>
+      <input id="username" type="text" formControlName="username" />
+      <div *ngIf="profileForm.get('username')?.invalid && profileForm.get('username')?.touched" class="error">
+        Username is required.
+      </div>
+    </div>
+
+    <div class="form-group">
+      <label for="email">Email:</label>
+      <input id="email" type="email" formControlName="email" />
+      <div *ngIf="profileForm.get('email')?.invalid && profileForm.get('email')?.touched" class="error">
+        Enter a valid email.
+      </div>
+    </div>
+
+    <div class="form-group">
+      <label for="phone">Phone:</label>
+      <input id="phone" type="text" formControlName="phone" />
+    </div>
+
+    <div class="form-group">
+      <label for="faculty">Faculty:</label>
+      <input id="faculty" type="text" formControlName="faculty" />
+    </div>
+
+    <div class="form-group">
+      <label for="adjective">Adjective:</label>
+      <input id="adjective" type="text" formControlName="adjective" />
+    </div>
+
+    <!-- <div class="form-group">
+      <label for="profile_image">Profile Image URL:</label>
+      <input id="profile_image" type="text" formControlName="profile_image" />
+    </div> -->
+
+    <div class="form-group">
+      <label for="profile_image">Profile Image:</label>
+
+      <div *ngIf="imagePreview; else noImage">
+        <img [src]="imagePreview" alt="Profile Image" class="profile-image-preview" />
+      </div>
+      <ng-template #noImage>
+        <p>No profile image available</p>
+      </ng-template>
+
+      <input type="file" id="fileInput" (change)="onFileSelected($event)" />
+    </div>
+
+
+
+
+    <button type="submit" [disabled]="profileForm.invalid">Save</button>
+  </form>
+
+</div>
