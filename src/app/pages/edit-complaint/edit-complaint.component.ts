@@ -31,22 +31,20 @@ export class EditComplaintComponent implements OnInit {
   ) {}
 
   ngOnInit(): void {
-    this.complaintForm = this.fb.group({
-      title: ['', Validators.required],
-      sector: ['', Validators.required],
-      description: ['', Validators.required],
-      sc_type: ['', Validators.required],
-      attachments: [null]
-    });
+  this.complaintForm = this.fb.group({
+    title: ['', Validators.required],
+    sector: ['', Validators.required],
+    description: ['', Validators.required],
+    sc_type: ['', Validators.required],
+    attachments: [null]
+  });
 
-    this.route.params.subscribe(params => {
-    const id = +params['id'];
+  this.route.params.subscribe(params => {
+    this.id = +params['id']; 
     const sc_type = params['type'];
-    this.loadComplaint(id, sc_type);
-    }
-  );
-    
-  }
+    this.loadComplaint(this.id, sc_type);
+  });
+}
 
   get f() {
     return this.complaintForm.controls;

@@ -23,15 +23,19 @@ export const routes: Routes = [
       { path: 'submit-complaint', component: SubmitComplaintComponent },
       { path: 'profile', component: ProfileComponent, canActivate: [AuthGuard] },
       { path: 'profile/edit', component: EditProfileComponent },
-      { path: 'complaint/edit', component: EditComplaintComponent },
       { path: 'complaint/details/:id/:sc_type', component: SpecificComplaintComponent },
+      { path: 'complaint/edit/:id/:sc_type', component: EditComplaintComponent }
     ]
   },
   { path: 'register', component: RegisterComponent },
   { path: 'login', component: LoginComponent },
   { path: 'forget-password', component: ForgetPasswordComponent },
   { path: 'check-complaint-status', component: CheckComplaintStatusComponent },
-  { path: 'complaints-log', component: ComplaintsLogComponent }
+  { path: 'complaints-log', component: ComplaintsLogComponent },
+
+  
+  
+  
 ];
 
 

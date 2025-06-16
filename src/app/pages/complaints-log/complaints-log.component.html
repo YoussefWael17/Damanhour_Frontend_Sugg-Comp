@@ -24,13 +24,18 @@
         <td>{{ complaint.title }}</td>
         <td>{{ complaint.sc_type }}</td>
         <td class="status"
-            [class.done]="complaint.status === 'done'"
-            [class.pending]="complaint.status === 'pending'"
-            [class.rejected]="complaint.status === 'rejected'">
-          {{ complaint.status === 'done' ? 'تم الرد' : complaint.status === 'pending' ? 'قيد الانتظار' : 'تم الرفض' }}
+            [class.done]="complaint.status === 'تم الحل'"
+            [class.pending]="complaint.status === 'معلق'"
+            [class.rejected]="complaint.status === 'مرفوض'"
+            [class.inprogress]="complaint.status === 'قيد التنفيذ'">
+          {{ complaint.status === 'تم الحل' ? 'تم الحل' : complaint.status === 'معلق' ? 'معلق' : complaint.status === 'قيد التنفيذ'? 'قيد التنفيذ' : 'مرفوض' }}
         </td>
         <td>
           <a [routerLink]="['/complaint/details', complaint.id, complaint.sc_type]" class="details-link">عرض</a>
+          |
+          <a (click)="goToEdit(complaint)"  class="edit-link" style="color: orange; cursor: pointer;">تعديل</a>
+          |
+          <a (click)="deleteSuggestion(complaint.id, complaint.sc_type)" class="delete-link" style="color: red; cursor: pointer;">حذف</a>
         </td>
       </tr>
     </tbody>
@@ -38,7 +43,6 @@
 
   <!-- تحميل أو خطأ -->
   <p *ngIf="isLoading">جاري التحميل...</p>
-  <p class="error-message" *ngIf="errorMessage">{{ errorMessage }}</p>
   <p *ngIf="!isLoading && complaints.length === 0">لا توجد بيانات.</p>
 
   <a routerLink="/submit-complaint" class="back-button">{{ 'complaints-log.back' | translate }}</a>

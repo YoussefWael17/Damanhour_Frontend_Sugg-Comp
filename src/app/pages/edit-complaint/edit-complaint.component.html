@@ -1,20 +1,31 @@
-<!-- Main Heading -->
-<div class="main-heading">
-  <h1>{{ 'submit-complaint.edit_title' | translate }}</h1>
-</div>
+<div class="container complaint-edit-container">
+  <!-- Main Heading -->
+  <div class="main-heading">
+    <h1>{{ 'submit-complaint.edit_title' | translate }}</h1>
+  </div>
 
-<!-- Complaint Edit Form -->
-<div class="complaint-form">
+  <!-- Complaint Edit Form -->
   <form [formGroup]="complaintForm" (ngSubmit)="onSubmit()" novalidate>
 
     <!-- Title -->
     <label for="title">{{ 'submit-complaint.title' | translate }}</label>
-    <input type="text" id="title" formControlName="title" [class.is-invalid]="submitted && f['title'].invalid" />
+    <input
+      type="text"
+      id="title"
+      formControlName="title"
+      [class.is-invalid]="submitted && f['title'].invalid"
+      class="form-control"
+    />
     <div *ngIf="submitted && f['title'].invalid" class="invalid-feedback">العنوان مطلوب</div>
 
     <!-- Sector -->
     <label for="sector">{{ 'submit-complaint.sector' | translate }}</label>
-    <select id="sector" formControlName="sector" [class.is-invalid]="submitted && f['sector'].invalid">
+    <select
+      id="sector"
+      formControlName="sector"
+      [class.is-invalid]="submitted && f['sector'].invalid"
+      class="form-control"
+    >
       <option value="" disabled>{{ 'submit-complaint.enter_sector' | translate }}</option>
       <option value="قطاع شئون التعليم والطلاب">{{ 'submit-complaint.sector1' | translate }}</option>
       <option value="قطاع شئون خدمة المجتمع وتنمية البيئة">{{ 'submit-complaint.sector2' | translate }}</option>
@@ -26,7 +37,12 @@
 
     <!-- Type -->
     <label for="sc_type">{{ 'submit-complaint.type' | translate }}</label>
-    <select id="sc_type" formControlName="sc_type" [class.is-invalid]="submitted && f['sc_type'].invalid">
+    <select
+      id="sc_type"
+      formControlName="sc_type"
+      [class.is-invalid]="submitted && f['sc_type'].invalid"
+      class="form-control"
+    >
       <option value="" disabled>{{ 'submit-complaint.enter_type' | translate }}</option>
       <option value="اقتراح">{{ 'submit-complaint.type1' | translate }}</option>
       <option value="شكوى">{{ 'submit-complaint.type2' | translate }}</option>
@@ -35,15 +51,27 @@
 
     <!-- Description -->
     <label for="description">{{ 'submit-complaint.desc' | translate }}</label>
-    <textarea id="description" formControlName="description" placeholder="{{ 'submit-complaint.desc_content' | translate }}" [class.is-invalid]="submitted && f['description'].invalid"></textarea>
+    <textarea
+      id="description"
+      formControlName="description"
+      class="form-control"
+      placeholder="{{ 'submit-complaint.desc_content' | translate }}"
+      [class.is-invalid]="submitted && f['description'].invalid"
+    ></textarea>
     <div *ngIf="submitted && f['description'].invalid" class="invalid-feedback">الوصف مطلوب</div>
 
     <!-- File Upload -->
     <label for="file-upload">{{ 'submit-complaint.download' | translate }}</label>
-    <input type="file" id="file-upload" (change)="onComplaintFileSelected($event)" accept=".pdf,.doc,.docx,.jpg,.png,.jpeg" />
+    <input
+      type="file"
+      id="file-upload"
+      (change)="onComplaintFileSelected($event)"
+      accept=".pdf,.doc,.docx,.jpg,.png,.jpeg"
+      class="form-control"
+    />
 
     <!-- Submit Button -->
-    <button type="submit" [disabled]="isLoading || complaintForm.invalid">
+    <button type="submit" [disabled]="isLoading || complaintForm.invalid" class="submit-button">
       <span *ngIf="!isLoading">{{ 'submit-complaint.update' | translate }}</span>
       <span *ngIf="isLoading">جاري التحديث...</span>
     </button>
@@ -55,11 +83,10 @@
 
     <!-- Log Button -->
     <div style="text-align: center; margin-top: 40px;">
-      <a routerLink="/complaints-log" class="log-button" aria-label="عرض سجل الشكاوى">
+      <a routerLink="/complaints-log" class="back-button" aria-label="عرض سجل الشكاوى">
         📋 {{ 'submit-complaint.show' | translate }}
       </a>
     </div>
-
   </form>
 </div>
 

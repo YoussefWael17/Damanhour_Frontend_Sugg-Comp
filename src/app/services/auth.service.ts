@@ -159,6 +159,20 @@ deleteProfile() {
 }
 
 
+deleteSuggestion(id: number, sc_type: string) {
+  const token = localStorage.getItem('auth_token');
+  const headers = new HttpHeaders({
+    Authorization: `Bearer ${token}`
+  });
+
+  let endpoint = 'suggestion/';
+  if (sc_type === 'شكوى') {
+    endpoint = 'complaint/';
+  }
+
+  return this.http.delete(`${this.apiUrl}${endpoint}${id}/`, { headers });
+}
+
 
   // التحقق من حالة التسجيل
   isLoggedIn(): boolean {

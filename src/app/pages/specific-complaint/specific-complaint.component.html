@@ -1,13 +1,13 @@
-<div *ngIf="isLoading">
+<div *ngIf="isLoading" class="loading">
   جاري التحميل...
 </div>
 
-<div *ngIf="errorMessage">
-  <p class="error-message">{{ errorMessage }}</p>
+<div *ngIf="errorMessage" class="error-message">
+  {{ errorMessage }}
 </div>
 
-<div class="detail-container" *ngIf="suggestion && !isLoading">
-  <h2>{{ suggestion.title }}</h2>
+<div class="detail-card" *ngIf="suggestion && !isLoading">
+  <h2 class="title">{{ suggestion.title }}</h2>
 
   <p><strong>القطاع:</strong> {{ suggestion.sector }}</p>
   <p><strong>النوع:</strong> {{ suggestion.sc_type }}</p>
@@ -16,11 +16,16 @@
 
   <div *ngIf="suggestion.attachments">
     <strong>المرفق:</strong>
-    <a [href]="suggestion.attachments" target="_blank" download>
+    <a [href]="suggestion.attachments" target="_blank" download class="attachment-link">
       {{ suggestion.attachmentsName || 'تحميل الملف' }}
     </a>
   </div>
 
-  <button (click)="goBack()">عودة</button>
+  <div class="button-group">
+    <button (click)="goBack()" class="btn btn-back">عودة</button>
+    <button [routerLink]="['/complaint/edit', suggestion.id, suggestion.sc_type]" class="btn btn-edit">تعديل</button>
+    <!-- <button (click)="deleteSuggestion(suggestion.id, suggestion.sc_type)" class="btn btn-delete">حذف</button> -->
+  </div>
 </div>
+
 

@@ -52,45 +52,6 @@ export class RegisterComponent {
     this.showPassword = !this.showPassword;
   }
 
-//   onSubmit() {
-//   console.log('onSubmit called');
-//   console.log(this.registerForm.value);
-
-//   this.submitted = true;
-//   this.errorMessage = '';
-
-//   if (this.registerForm.invalid) {
-//     this.errorMessage = 'يوجد أخطاء في النموذج';
-//     return;
-//   }
-
-//   this.isLoading = true;
-  
-//   const formValue = this.registerForm.value;
-
-//   this.authService.register(
-//     formValue.username,
-//     formValue.email,
-//     formValue.national_id,
-//     formValue.phone,
-//     formValue.faculty,
-//     formValue.agree_terms,
-//     formValue.password,
-//     formValue.adjective
-//   ).subscribe({
-//     next: () => {
-//       this.router.navigate(['/login']); // غيرها للصفحة اللي عايز تروحها بعد التسجيل
-//     },
-//     error: (err) => {
-//       this.errorMessage = err.error?.message || 'فشل في عملية التسجيل';
-//       this.isLoading = false;
-//     },
-//     complete: () => {
-//       this.isLoading = false;
-//     }
-//   });
-// }
-
 onSubmit() {
   this.submitted = true;
   this.errorMessage = '';

@@ -26,10 +26,8 @@ export class SpecificComplaintComponent implements OnInit {
   ) {}
 
   ngOnInit(): void {
-    // قراءة الـ id و sc_type من رابط الصفحة (URL)
     const id = Number(this.route.snapshot.paramMap.get('id'));
-    const sc_type = this.route.snapshot.queryParamMap.get('sc_type') || 'اقتراح'; // افتراضي اقتراح
-
+    const sc_type = this.route.snapshot.paramMap.get('sc_type') || 'اقتراح'; 
     this.loadSuggestion(id, sc_type);
   }
 
