@@ -14,6 +14,7 @@ import { EditProfileComponent } from './pages/edit-profile/edit-profile.componen
 import { EditComplaintComponent } from './pages/edit-complaint/edit-complaint.component';
 import { SpecificComplaintComponent } from './pages/specific-complaint/specific-complaint.component';
 import { VerifyOtpComponent } from './pages/verify-otp/verify-otp.component';
+import { ResetPasswordComponent } from './pages/reset-password/reset-password.component';
 
 export const routes: Routes = [
   {
@@ -34,11 +35,7 @@ export const routes: Routes = [
   { path: 'check-complaint-status', component: CheckComplaintStatusComponent },
   { path: 'complaints-log', component: ComplaintsLogComponent },
   { path: 'verify-otp', component: VerifyOtpComponent },
-  {
-  path: 'reset-password',
-  loadComponent: () => import('./pages/reset-password/reset-password.component')
-    .then(m => m.ResetPasswordComponent)
-}
+  { path: 'reset-password', component:ResetPasswordComponent}
 
 ];
 

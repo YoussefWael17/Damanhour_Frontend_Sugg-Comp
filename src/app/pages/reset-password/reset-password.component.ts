@@ -31,6 +31,16 @@ export class ResetPasswordComponent {
 
   }
 
+  showPasswordFields: { [key: string]: boolean } = {
+  new_password: false,
+  confirm_password: false,
+};
+
+  togglePasswordVisibility(field: string): void {
+    this.showPasswordFields[field] = !this.showPasswordFields[field];
+  }
+
+
   get f() {
     return this.resetForm.controls;
   }
