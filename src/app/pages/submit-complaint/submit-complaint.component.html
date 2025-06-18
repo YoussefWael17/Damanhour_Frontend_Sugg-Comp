@@ -61,14 +61,7 @@
 
     <!-- Message -->
     <div class="form-message" *ngIf="formMessage">
-      {{ formMessage }}
-    </div>
-
-    <!-- Log Button -->
-    <div style="text-align: center; margin-top: 40px;">
-      <a routerLink="/complaints-log" class="log-button" aria-label="عرض سجل الشكاوى">
-        📋 {{ 'submit-complaint.show' | translate }}
-      </a>
+      {{ formMessage | translate }}
     </div>
 
   </form>

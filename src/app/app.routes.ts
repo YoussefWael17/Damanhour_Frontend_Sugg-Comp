@@ -15,6 +15,7 @@ import { EditComplaintComponent } from './pages/edit-complaint/edit-complaint.co
 import { SpecificComplaintComponent } from './pages/specific-complaint/specific-complaint.component';
 import { VerifyOtpComponent } from './pages/verify-otp/verify-otp.component';
 import { ResetPasswordComponent } from './pages/reset-password/reset-password.component';
+import { AdminComponent } from './pages/admin/admin.component'
 
 export const routes: Routes = [
   {
@@ -35,7 +36,8 @@ export const routes: Routes = [
   { path: 'check-complaint-status', component: CheckComplaintStatusComponent },
   { path: 'complaints-log', component: ComplaintsLogComponent },
   { path: 'verify-otp', component: VerifyOtpComponent },
-  { path: 'reset-password', component:ResetPasswordComponent}
+  { path: 'reset-password', component:ResetPasswordComponent},
+  { path: 'admin', component:AdminComponent},
 
 ];
 

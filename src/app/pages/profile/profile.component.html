@@ -28,11 +28,11 @@
   <button class="logout-button" (click)="logout()">{{ 'profile.sign out' | translate }}</button>
   
   <a routerLink="/profile/edit">
-    <button class="edit-profile-button">Edit Profile</button>
+    <button class="edit-profile-button">{{ 'profile.edit' | translate }}</button>
   </a>
 
   <button class="delete-button" (click)="onDeleteProfile()">
-    حذف الملف الشخصي
+    {{ 'profile.delete' | translate }}
   </button>
 
 </div>

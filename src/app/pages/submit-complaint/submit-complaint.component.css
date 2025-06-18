@@ -78,7 +78,7 @@ a {
   max-width: 800px;
   margin: 40px auto;
   padding: 30px;
-  background-color: #f2f2f2;
+  background-color: #fff;
   border-radius: 12px;
   box-shadow: 0 0 15px rgba(0, 0, 0, 0.1);
 }
@@ -172,7 +172,7 @@ a {
   transition: all 0.3s ease;
   display: inline-block;
   box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15);
-  margin-top: 50px;
+  margin-top: 0px;
 }
 
 .log-button:hover {
@@ -181,8 +181,28 @@ a {
   box-shadow: 0 6px 14px rgba(0, 0, 0, 0.2);
 }
 
-/* Responsive */
-@media (max-width: 1209px) {
+/* ========== Responsive: Large Screens (min-width: 1200px) ========== */
+@media (min-width: 1200px) {
+  .complaint-form {
+    padding: 40px 60px;
+  }
+
+  .complaint-form input,
+  .complaint-form select,
+  .complaint-form textarea {
+    font-size: 20px;
+    padding: 18px;
+  }
+
+  .complaint-form button,
+  .log-button {
+    font-size: 22px;
+    padding: 20px 40px;
+  }
+}
+
+/* ========== Responsive: Medium Screens (tablets 768px - 1199px) ========== */
+@media (max-width: 1199px) and (min-width: 768px) {
   .main-heading h1 {
     font-size: 38px;
   }
@@ -190,9 +210,27 @@ a {
   .section .text h1 {
     font-size: 32px;
   }
+
+  .complaint-form {
+    padding: 30px;
+  }
+
+  .complaint-form input,
+  .complaint-form select,
+  .complaint-form textarea {
+    font-size: 18px;
+    padding: 14px;
+  }
+
+  .complaint-form button,
+  .log-button {
+    font-size: 18px;
+    padding: 16px 28px;
+  }
 }
 
-@media (max-width: 768px) {
+/* ========== Responsive: Small Screens (mobiles 481px - 767px) ========== */
+@media (max-width: 767px) and (min-width: 481px) {
   .main-heading h1 {
     font-size: 30px;
   }
@@ -200,8 +238,31 @@ a {
   .section .text h1 {
     font-size: 28px;
   }
+
+  .complaint-form {
+    padding: 20px;
+    margin: 20px 15px;
+  }
+
+  .complaint-form input,
+  .complaint-form select,
+  .complaint-form textarea {
+    font-size: 16px;
+    padding: 12px;
+  }
+
+  .complaint-form button,
+  .log-button {
+    font-size: 16px;
+    padding: 14px 24px;
+  }
+
+  .form-message {
+    font-size: 14px;
+  }
 }
 
+/* ========== Responsive: Extra Small Screens (<=480px) ========== */
 @media (max-width: 480px) {
   .main-heading h1 {
     font-size: 22px;
@@ -215,19 +276,19 @@ a {
 
   .complaint-form {
     padding: 15px;
-    margin: 20px 10px;
+    margin: 15px 10px;
   }
 
   .complaint-form input,
   .complaint-form select,
   .complaint-form textarea {
-    font-size: 16px;
+    font-size: 15px;
     padding: 10px;
   }
 
   .complaint-form button,
   .log-button {
-    font-size: 16px;
+    font-size: 15px;
     padding: 12px 20px;
   }
 
@@ -236,7 +297,7 @@ a {
   }
 
   .form-message {
-    font-size: 14px;
+    font-size: 13px;
     padding: 8px;
   }
 
@@ -245,3 +306,4 @@ a {
     height: 70%;
   }
 }
+

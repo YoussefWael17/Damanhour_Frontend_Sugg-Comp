@@ -92,6 +92,8 @@ export class LoginComponent {
     error: (err) => {
       this.errorMessage = err.error?.message || 'فشل تسجيل الدخول';
       this.isLoading = false;
+      this.errorMessage = 'login.error';
+
     },
     complete: () => {
       this.isLoading = false;

@@ -70,14 +70,6 @@
         الكلية مطلوبة
       </div>
 
-      <!-- Agree Terms -->
-      <div class="form-group form-check">
-      <input type="checkbox" id="agree_terms" formControlName="agree_terms" [class.is-invalid]="submitted && f['agree_terms'].invalid"/>
-      <label class="form-check-label" for="agree_terms"> {{ 'register.confirm' | translate }}</label>
-      <div *ngIf="submitted && f['agree_terms'].invalid" class="invalid-feedback">
-        يجب الموافقة على الشروط
-      </div>
-
       <!-- Password -->
       <div class="password-input-wrapper">
       <label for="password">{{'register.password' | translate }}</label>
@@ -108,6 +100,14 @@
         الصفة مطلوبة
       </div>
     </div>
+
+              <!-- Agree Terms -->
+      <div class="form-group form-check">
+      <input type="checkbox" id="agree_terms" formControlName="agree_terms" [class.is-invalid]="submitted && f['agree_terms'].invalid"/>
+      <label class="form-check-label" for="agree_terms"> {{ 'register.confirm' | translate }}</label>
+      <div *ngIf="submitted && f['agree_terms'].invalid" class="invalid-feedback">
+        يجب الموافقة على الشروط
+      </div>
 
     
     <button type="submit" class="btn btn-primary w-100" [disabled]="isLoading">

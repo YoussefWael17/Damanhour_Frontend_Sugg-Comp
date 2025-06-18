@@ -3,6 +3,8 @@
   border-radius: 12px;
   padding: 40px;
   box-shadow: 0 0 20px rgba(0, 0, 0, 0.05);
+  margin-top: 60px;   /* مساحة للـ navbar */
+  margin-bottom: 60px; /* مساحة للـ footer */
 }
 
 .profile-header {
@@ -23,7 +25,16 @@
 .profile-info {
   display: flex;
   flex-direction: column;
+}
+
+html[dir="rtl"] .profile-info {
+  align-items: flex-end;
+  text-align: right;
+}
+
+html[dir="ltr"] .profile-info {
   align-items: flex-start;
+  text-align: left;
 }
 
 .profile-info .name {
@@ -54,6 +65,14 @@
   color: #444;
 }
 
+html[dir="rtl"] .user-details {
+  text-align: right;
+}
+
+html[dir="ltr"] .user-details {
+  text-align: left;
+}
+
 .detail-item {
   padding: 8px 0;
   font-weight: 700;
@@ -64,10 +83,11 @@
   font-weight: bold;
   margin-left: 8px;
   font-size: 17px;
-  font-weight: 700;
 }
 
-.logout-button, .edit-profile-button {
+.logout-button,
+.edit-profile-button,
+.delete-button {
   padding: 14px 28px;
   border-radius: 8px;
   font-weight: bold;
@@ -81,7 +101,6 @@
 
 .logout-button {
   background-color: #c0392b;
-  margin-right: 15px; /* مسافة بين الزرين */
 }
 
 .logout-button:hover {
@@ -96,6 +115,18 @@
   background-color: #0056b3;
 }
 
+.delete-button {
+  background-color: #6c757d;
+}
+
+.delete-button:hover {
+  background-color: #5a6268;
+}
+
+.edit-profile-link {
+  display: inline-block;
+}
+
 .buttons-container {
   margin-top: 30px;
   display: flex;
@@ -104,7 +135,6 @@
   gap: 10px;
 }
 
-/* استجابة للجوال */
 @media (max-width: 600px) {
   .profile {
     padding: 20px;
@@ -117,32 +147,30 @@
   }
 
   .profile-info {
-    align-items: center;
+    align-items: center !important;
+    text-align: center !important;
   }
 
   .buttons-container {
-    justify-content: center;
+    flex-direction: column;
+    align-items: stretch;
+    gap: 12px;
   }
 
-  .logout-button, .edit-profile-button {
+  .logout-button,
+  .edit-profile-button,
+  .delete-button {
     width: 100%;
-    margin-right: 0;
+    min-width: 160px;
+    padding: 14px 0;
+    text-align: center;
   }
 }
 
-
-.delete-button {
-  background-color: #c0392b;
-  color: white;
-  border: none;
-  padding: 12px 20px;
-  border-radius: 8px;
-  font-weight: bold;
-  cursor: pointer;
-  transition: background-color 0.3s ease;
+@media (min-width: 768px) {
+  .profile {
+    max-width: 700px;
+    margin-left: auto;
+    margin-right: auto;
+  }
 }
-
-.delete-button:hover {
-  background-color: #e74c3c;
-}
-

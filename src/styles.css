@@ -42,6 +42,7 @@ a {
   padding: 0 30px;
 }
 
+
 h1, h2, h3, h4, h5, h6 {
   font-weight: 700;
   color: var(--main-color);
@@ -63,3 +64,53 @@ h1, h2, h3, h4, h5, h6 {
 [dir="ltr"] .section .text::after {
   left: -15px;
 }
+
+html[dir="ltr"] .login-form label {
+  text-align: left;
+}
+
+html[dir="rtl"] .login-form label {
+  text-align: right;
+}
+
+/* دعم اللغات RTL و LTR لتنسيق اللابل */
+html[dir="rtl"] .login-form label {
+  text-align: right;
+}
+
+html[dir="ltr"] .login-form label {
+  text-align: left;
+}
+/* دعم اللغات RTL و LTR لتنسيق اللابل */
+html[dir="rtl"] .forgot-password-form label{
+  text-align: right;
+}
+
+html[dir="ltr"] .forgot-password-form label {
+  text-align: left;
+}
+
+
+
+/* توجيه الفقرات */
+
+html[dir="rtl"] .no-account {
+  text-align: right;
+}
+
+
+html[dir="ltr"] .no-account {
+  text-align: left;
+}
+
+/* توجيه رابط "نسيت كلمة المرور" */
+html[dir="rtl"] .forgot-password {
+  text-align: right;
+}
+
+html[dir="ltr"] .forgot-password {
+  text-align: left;
+}
+
+
+

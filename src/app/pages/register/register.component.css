@@ -2,7 +2,6 @@
 .main-heading {
     text-align: center;
     padding-top: 60px;
-    /* زودنا المسافة من الناف بار */
     padding-bottom: 0;
 }
 
@@ -32,6 +31,7 @@
     line-height: 1.8;
     color: #333;
     position: relative;
+    padding-inline-start: 20px;
     &:dir(ltr) {
         text-align: left;
        }
@@ -58,6 +58,7 @@
     position: absolute;
     top: 0;
     right: -15px;
+    inset-inline-start: 0;
     width: 6px;
     height: 85%;
     background-color: #FF731D;
@@ -103,6 +104,7 @@
     font-size: 18px;
     font-family: "Cairo", sans-serif;
     transition: all 0.3s ease;
+    margin: 0 8px;
 }
 
 .complaint-form input:focus,
@@ -119,37 +121,33 @@
 
 .password-input-wrapper {
     position: relative;
-    /* عشان نقدر نعمل position للأيقونة جواه */
     display: flex;
-    /* عشان نرتب العناصر جنب بعض */
     flex-direction: column;
-    /* نرجع الليبل فوق الحقل */
 }
 
 .password-input-wrapper input[type="password"],
 .password-input-wrapper input[type="text"] {
-    /* هنطبق نفس التنسيق لو غيرنا نوع الإدخال بالـ JS */
     padding-right: 40px;
-    /* مساحة عشان الأيقونة */
 }
 
 .password-toggle {
     position: absolute;
     top: 50%;
     left: 10px;
-    /* تعديل مكان الأيقونة حسب اتجاه النص */
     transform: translateY(-50%);
     cursor: pointer;
     color: #777;
 }
 
-/* لو النص بالإنجليزي هيكون مكان الأيقونة على اليمين */
+
 html[dir="ltr"] .password-toggle {
     right: 10px;
     left: auto;
 }
 
 .complaint-form button {
+    display: block;
+    margin: 20px auto 0 auto; /* top right bottom left */
     background: linear-gradient(to right, #1E427E, #12284C);
     color: white;
     padding: 28px 40px;
@@ -173,9 +171,7 @@ html[dir="ltr"] .password-toggle {
     margin-top: 20px;
     padding: 10px;
     background-color: #d4edda;
-    /* لون أخضر فاتح للرسالة */
     color: #155724;
-    /* لون أخضر غامق للنص */
     font-size: 16px;
     font-weight: bold;
     border-radius: 5px;
@@ -186,11 +182,9 @@ html[dir="ltr"] .password-toggle {
     margin-right: auto;
 }
 
-/* سجل الشكاوى (هنغير اسمه لـ تسجيل الدخول) */
 
 .log-button {
     background: linear-gradient(to right, #1E427E, #FF731D);
-    /* تدرج بين الأزرق الأساسي والبرتقالي */
     color: white;
     padding: 20px 33px;
     border: none;
@@ -206,12 +200,12 @@ html[dir="ltr"] .password-toggle {
 
 .log-button:hover {
     background: linear-gradient(to right, #12284C, #E65C00);
-    /* تدرج أغمق عند التحويم */
+
     transform: translateY(-2px);
     box-shadow: 0 6px 14px rgba(0, 0, 0, 0.2);
 }
 
-/* Checkbox Wrapper */
+
 .checkbox-wrapper {
     margin: 15px 0;
     font-size: 16px;
@@ -231,43 +225,97 @@ html[dir="ltr"] .password-toggle {
 }
 
 /* Responsive */
-@media (max-width: 1209px) {
-    .main-heading h1 {
-        font-size: 38px;
-    }
+/* الشاشات الكبيرة: أكبر من 992px */
+@media (min-width: 993px) {
+  .complaint-form {
+    max-width: 750px;
+    margin: 40px auto;
+    padding: 25px;
+  }
 
-    .section .text h1 {
-        font-size: 32px;
-    }
+  .main-heading h1 {
+    font-size: 48px;
+  }
+
+  .section .text h1 {
+    font-size: 30px;
+  }
 }
 
-@media (max-width: 768px) {
-    .main-heading h1 {
-        font-size: 30px;
-    }
+/* الشاشات المتوسطة: من 768px إلى 992px */
+@media (max-width: 992px) {
+  .complaint-form {
+    max-width: 100%;
+    margin: 25px 15px;
+    padding: 20px;
+  }
 
-    .section .text h1 {
-        font-size: 28px;
-    }
+  .main-heading h1 {
+    font-size: 36px;
+  }
 
-    .container {
-        padding: 0 15px;
-    }
+  .section .text h1 {
+    font-size: 26px;
+  }
 
-    .complaint-form {
-        padding: 20px;
-    }
-
-    .complaint-form button {
-        padding: 15px 25px;
-        font-size: 18px;
-    }
-
-    .log-button {
-        padding: 15px 25px;
-        font-size: 18px;
-    }
+  .complaint-form button,
+  .log-button {
+    padding: 15px 25px;
+    font-size: 18px;
+  }
 }
+
+/* الشاشات الصغيرة: أقل من 768px */
+@media (max-width: 767px) {
+  .container {
+    padding: 0 15px;
+  }
+
+  .complaint-form {
+    max-width: 100%;
+    margin: 20px 10px;
+    padding: 15px;
+  }
+
+  .main-heading h1 {
+    font-size: 28px;
+  }
+
+  .section .text h1 {
+    font-size: 22px;
+  }
+
+  .complaint-form button,
+  .log-button {
+    padding: 12px 20px;
+    font-size: 16px;
+  }
+
+  .form-message {
+    font-size: 14px;
+    padding: 8px;
+  }
+}
+
+/* الشاشات الصغيرة جدًا: أقل من 480px */
+@media (max-width: 480px) {
+  .complaint-form {
+    margin: 20px 10px;
+    padding: 15px;
+  }
+
+  .main-heading h1,
+  .section .text h1 {
+    font-size: 22px;
+  }
+
+  .complaint-form button,
+  .log-button {
+    font-size: 15px;
+    padding: 10px 18px;
+  }
+}
+
 
 .password-input-wrapper {
     position: relative;
@@ -285,11 +333,20 @@ html[dir="ltr"] .password-toggle {
 .password-input-wrapper i {
     position: absolute;
     top: 62%;
-    left: 25px;
+    
     transform: translateY(-50%);
     cursor: pointer;
     color: #666;
 }
+
+:dir(rtl) .password-input-wrapper i {
+  left: 25px;
+}
+
+:dir(ltr) .password-input-wrapper i {
+  right: 25px;
+}
+
 
 .error-message {
     color: red;

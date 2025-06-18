@@ -68,7 +68,7 @@ export class SubmitComplaintComponent {
     sc_type
   ).subscribe({
     next: (res) => {
-      this.formMessage = `تم ارسال ال${sc_type} بنجاح`;
+      this.formMessage = 'submit-complaint.form-message';
       this.isLoading = false;
       this.complaintForm.reset();
       this.submitted = false;
@@ -77,6 +77,7 @@ export class SubmitComplaintComponent {
     error: (err) => {
       this.formMessage = 'حدث خطأ أثناء الإرسال';
       this.isLoading = false;
+      
     }
   });
   }}

@@ -11,7 +11,8 @@
     "register":"Create Account",
    "Submit": "Submit a complaint",
 "follow": "check the complaint",
-"records": "Complaint record"
+"records": "Complaint record",
+   "admin":"Admin Register"
 
    },
    "footer":{
@@ -39,6 +40,7 @@
 "status4": "Researcher",
 "status5": "Graduate",
 "status6": "Student",
+"status":"Status",
 
 
   "uni": "Faculty",
@@ -71,9 +73,12 @@
 "enter_email":"Enter your email",
 "password":"Password",
 "enter_pas":"Enter your password",
-"forget_question":"? Forgot your password",
+"forget_question":"Forgot your password?",
 "end_reg":"Sign in",
-"question":"Don't have an account? Register now and start your journey"
+"question":"Don't have an account? Register now and start your journey",
+"register_here": "Register Now !!",
+"loading": "Loading...",
+"error": "Login error"
 },
 
 "profile":{
@@ -83,10 +88,12 @@
 "faculty":"College:",
 "phone":"Phone Number:",
 "status":"Personal identity:",
-"sign out": "Sign out"
+"sign out": "Sign out",
+"edit": "ُEdit Profile",
+"delete":"Delete Profile "
 },
 "forget-password":{
-"question":"?Forget your password",
+"question":"Forget your password",
 "msg":"Enter your registered email address and we'll send you a link to reset your password.",
 "email":"Email",
 "enter_email":"Enter your email",
@@ -116,7 +123,9 @@
 "sector5": "University Administration Sector",
 
 "type1": "Suggestion",
-"type2": "Complaint"
+"type2": "Complaint",
+"form-message":"successfully sent",
+"form-message2":" failed  "
 
 
 },
@@ -167,5 +176,23 @@
 "back":"Return to Complaint Submission Page",
 "show":"View Complaint History",
 "end_msg":"The complaint status is automatically updated after management review. Please check the page later if you have not received a response yet."
+},
+"admin": {
+  "title": "Register New Admin",
+  "sub_title": "Please fill in the admin's details accurately",
+  "full_name": "Full Name",
+  "enter_name": "Enter full name",
+  "national_id": "National ID",
+  "enter_nid": "Enter national ID",
+  "email": "Email",
+  "enter_email": "Enter your email",
+  "phone_number": "Phone Number",
+  "enter_number": "Enter phone number",
+  "password": "Password",
+  "confirm": "I agree to the terms and conditions",
+  "end_reg": "Register Admin",
+  "notice": "An error occurred during registration. Please try again.",
+  "question": "Already have an account? Login"
 }
+
 }

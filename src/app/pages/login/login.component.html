@@ -39,7 +39,7 @@
             [class.is-invalid]="submitted && f['password'].errors"
           />
           <div class="input-group-append">
-            <span class="input-group-text" (click)="togglePassword()">
+            <span class="password-toggle" (click)="togglePassword()">
               <i class="fa" [ngClass]="showPassword ? 'fa-eye' : 'fa-eye-slash'"></i>
             </span>
           </div>
@@ -63,7 +63,7 @@
         class="btn btn-primary btn-block"
         [disabled]="isLoading || loginForm.invalid"
       >
-        <span *ngIf="!isLoading">{{ 'login.login_btn' | translate }}</span>
+        <span *ngIf="!isLoading">{{ 'login.end_reg' | translate }}</span>
         <span *ngIf="isLoading">
           <span class="spinner-border spinner-border-sm" role="status" aria-hidden="true"></span>
           {{ 'login.loading' | translate }}
@@ -72,14 +72,14 @@
 
       <!-- رسائل الخطأ -->
       <div *ngIf="errorMessage" class="alert alert-danger mt-3">
-        {{ errorMessage }}
+        {{ errorMessage | translate }}
       </div>
     </form>
   </div>
 
   <!-- رابط إنشاء حساب -->
   <div class="no-account">
-    <p>{{ 'login.no_account' | translate }} <a routerLink="/register" class="register-link">{{ 'login.register_here' | translate }}</a></p>
+    <p>{{ 'login.question' | translate }} <a routerLink="/register" class="register-link">{{ 'login.register_here' | translate }}</a></p>
   </div>
 </div>
 
