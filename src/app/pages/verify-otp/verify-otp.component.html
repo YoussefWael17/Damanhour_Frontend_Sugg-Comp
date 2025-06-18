@@ -1,0 +1,21 @@
+<div class="verify-otp-container">
+  <h2>{{ 'otp.title' | translate }}</h2>
+  <form [formGroup]="otpForm" (ngSubmit)="onSubmit()">
+    <label>{{ 'otp.enter' | translate }}</label>
+    <input type="text" formControlName="otp" maxlength="6" />
+
+    <div class="error" *ngIf="submitted && f['otp'].errors">
+      <span *ngIf="f['otp'].errors['required']">{{ 'otp.errors.required' | translate }}</span>
+      <span *ngIf="f['otp'].errors['pattern']">{{ 'otp.errors.invalid' | translate }}</span>
+    </div>
+
+    <button type="submit" [disabled]="isLoading">
+      {{ isLoading ? ('otp.verifying' | translate) : ('otp.verify' | translate) }}
+    </button>
+  </form>
+
+  <div class="form-message error" *ngIf="errorMessage">
+    {{ errorMessage }}
+  </div>
+</div>
+

@@ -121,6 +121,35 @@
 
 },
 
+
+
+"reset-password": {
+  "title": "Reset Password",
+  "new": "New Password",
+  "confirm": "Confirm Password",
+  "submit": "Submit",
+  "loading": "Loading...",
+  "errors": {
+    "mismatch": "Passwords do not match."
+  }
+},
+
+
+"otp": {
+  "title": "Verify OTP",
+  "enter": "Enter the verification code",
+  "verify": "Verify",
+  "verifying": "Verifying...",
+  "errors": {
+    "required": "OTP is required.",
+    "invalid": "OTP must be a 6-digit number."
+  }
+},
+
+
+
+
+
 "complaints-log":{
 "title":"Complaints Log",
 "number":"Complaint Number",

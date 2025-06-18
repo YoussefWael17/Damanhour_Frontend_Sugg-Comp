@@ -32,6 +32,27 @@ export class AuthService {
     );
   }
 
+  forgetPassword(email: string) {
+    return this.http.post(`${this.apiUrl}auth/forget-password/`, { email });
+  }
+
+  verifyEmail(email: string, otp: string) {
+    return this.http.post(`${this.apiUrl}auth/email-verify/`, { email, otp });
+  }
+
+  resetPassword(email: string, new_password: string, confirm_password: string) {
+    return this.http.post(`${this.apiUrl}auth/reset-password/`, {
+      email,
+      new_password,
+      confirm_password
+    });
+  }
+
+
+
+
+
+
   createSuggestion(
   title: string,
   sector: string,
@@ -148,7 +169,6 @@ updateProfile(updatedData: any) {
   return this.http.put(`${this.apiUrl}user/profile/`, updatedData, { headers });
 }
 
-
 deleteProfile() {
   const token = localStorage.getItem('auth_token');
   const headers = new HttpHeaders({
@@ -157,7 +177,6 @@ deleteProfile() {
 
   return this.http.delete(`${this.apiUrl}user/profile/`, { headers });
 }
-
 
 deleteSuggestion(id: number, sc_type: string) {
   const token = localStorage.getItem('auth_token');

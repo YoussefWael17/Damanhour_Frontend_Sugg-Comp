@@ -13,6 +13,7 @@ import { AuthGuard } from './guards/auth.guard';
 import { EditProfileComponent } from './pages/edit-profile/edit-profile.component';
 import { EditComplaintComponent } from './pages/edit-complaint/edit-complaint.component';
 import { SpecificComplaintComponent } from './pages/specific-complaint/specific-complaint.component';
+import { VerifyOtpComponent } from './pages/verify-otp/verify-otp.component';
 
 export const routes: Routes = [
   {
@@ -24,7 +25,7 @@ export const routes: Routes = [
       { path: 'profile', component: ProfileComponent, canActivate: [AuthGuard] },
       { path: 'profile/edit', component: EditProfileComponent },
       { path: 'complaint/details/:id/:sc_type', component: SpecificComplaintComponent },
-      { path: 'complaint/edit/:id/:sc_type', component: EditComplaintComponent }
+      { path: 'complaint/edit/:id/:sc_type', component: EditComplaintComponent },
     ]
   },
   { path: 'register', component: RegisterComponent },
@@ -32,10 +33,13 @@ export const routes: Routes = [
   { path: 'forget-password', component: ForgetPasswordComponent },
   { path: 'check-complaint-status', component: CheckComplaintStatusComponent },
   { path: 'complaints-log', component: ComplaintsLogComponent },
+  { path: 'verify-otp', component: VerifyOtpComponent },
+  {
+  path: 'reset-password',
+  loadComponent: () => import('./pages/reset-password/reset-password.component')
+    .then(m => m.ResetPasswordComponent)
+}
 
-  
-  
-  
 ];
 
 
