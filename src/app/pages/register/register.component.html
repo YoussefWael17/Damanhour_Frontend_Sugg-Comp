@@ -86,10 +86,9 @@
 
     <div class="form-group">
       <label for="adjective">{{ 'register.status' | translate }}</label>
-      <select
+      <select class="statuss"
         id="adjective" formControlName="adjective" [class.is-invalid]="submitted && f['adjective'].invalid">
         <option value="" disabled selected>{{ 'register.enter_adjective' | translate }}</option>
-        <!-- <option value="موظف إداري">{{ 'register.status1' | translate }}</option> -->
         <option value="أستاذ">{{ 'register.status2' | translate }}</option>
         <option value="موظف">{{ 'register.status3' | translate }}</option>
         <option value="باحث">{{ 'register.status4' | translate }}</option>

@@ -22,11 +22,21 @@ export class AuthService {
   }
 
 
-  register(username:string, email: string, national_id:number, phone:number, faculty:string, agree_terms:boolean, password: string, adjective:string ) {
+  register(username:string, email: string, national_id:number, phone:number, faculty:string, agree_terms:boolean, password: string, adjective:string) {
     return this.http.post(`${this.apiUrl}auth/register/`, { username, email, national_id, phone, faculty, agree_terms, password, adjective }).pipe(
       tap((response: any) => {
         if (response.token) {
-          localStorage.setItem('auth_token', response.token); 
+          // localStorage.setItem('auth_token', response.token); 
+        }
+      })
+    );
+  }
+
+  adminRegister(username:string, email: string, national_id:number, phone:number, faculty:string, agree_terms:boolean, password: string, adjective:string, sector_admin:string) {
+    return this.http.post(`${this.apiUrl}auth/register/`, { username, email, national_id, phone, faculty, agree_terms, password, adjective, sector_admin }).pipe(
+      tap((response: any) => {
+        if (response.token) {
+          // localStorage.setItem('auth_token', response.token); 
         }
       })
     );

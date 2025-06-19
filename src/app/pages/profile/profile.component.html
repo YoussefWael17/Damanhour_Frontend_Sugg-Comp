@@ -1,7 +1,5 @@
 <div class="profile container">
-  <!-- Header: صورة + اسم + الكلية -->
   <div class="profile-header" *ngIf="profileData">
-    <!-- <img src="assets/profile.jpg" alt="Profile" class="profile-image" /> -->
       <div *ngIf="profileData.profile_image">
         <img [src]="profileData.profile_image" alt="Profile Image" class="profile-image" />
       </div>
@@ -11,10 +9,8 @@
     </div>
   </div>
 
-  <!-- Section Title -->
   <h3 class="section-title">{{ 'profile.info' | translate }}</h3>
 
-  <!-- معلومات المستخدم -->
   <div *ngIf="profileData"  class="user-details">
     <p class="detail-item"><strong>{{ 'profile.name' | translate }}</strong> {{ profileData.username }}</p>
     <p class="detail-item"><strong>{{ 'profile.email' | translate }}</strong> {{ profileData.email }}</p>
@@ -23,20 +19,20 @@
     <p class="detail-item"><strong>{{ 'profile.status' | translate }}</strong> {{ profileData.adjective }}</p>
   </div>
 
-  <!-- زر تسجيل الخروج -->
   <div class="buttons-container">
-  <button class="logout-button" (click)="logout()">{{ 'profile.sign out' | translate }}</button>
-  
-  <a routerLink="/profile/edit">
-    <button class="edit-profile-button">{{ 'profile.edit' | translate }}</button>
-  </a>
+    <a *ngIf="isAdmin" routerLink="/admin">
+      <button class="admin-register" >{{ 'navbar.admin' | translate }}</button>
+    </a>
 
-  <button class="delete-button" (click)="onDeleteProfile()">
-    {{ 'profile.delete' | translate }}
-  </button>
+    <a routerLink="/profile/edit">
+      <button class="edit-profile-button">{{ 'profile.edit' | translate }}</button>
+    </a>
 
-</div>
+    <button class="delete-button" (click)="onDeleteProfile()">
+      {{ 'profile.delete' | translate }}
+    </button>
 
-
+    <button class="logout-button" (click)="logout()">{{ 'profile.sign out' | translate }}</button>
+  </div>
 </div>
 

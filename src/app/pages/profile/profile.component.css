@@ -3,8 +3,8 @@
   border-radius: 12px;
   padding: 40px;
   box-shadow: 0 0 20px rgba(0, 0, 0, 0.05);
-  margin-top: 60px;   /* مساحة للـ navbar */
-  margin-bottom: 60px; /* مساحة للـ footer */
+  margin-top: 60px;   
+  margin-bottom: 60px; 
 }
 
 .profile-header {
@@ -85,19 +85,29 @@ html[dir="ltr"] .user-details {
   font-size: 17px;
 }
 
+
 .logout-button,
 .edit-profile-button,
-.delete-button {
+.delete-button,
+.admin-register {
   padding: 14px 28px;
   border-radius: 8px;
   font-weight: bold;
   cursor: pointer;
-  transition: background-color 0.3s ease;
+  transition: background-color 0.3s ease, transform 0.2s;
   font-size: 16px;
   border: none;
   color: white;
-  box-shadow: 0 3px 8px rgba(0,0,0,0.1);
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
 }
+
+.logout-button:hover,
+.edit-profile-button:hover,
+.delete-button:hover,
+.admin-register:hover {
+  transform: translateY(-2px);
+}
+
 
 .logout-button {
   background-color: #c0392b;
@@ -108,11 +118,11 @@ html[dir="ltr"] .user-details {
 }
 
 .edit-profile-button {
-  background-color: #007bff;
+  background-color: #000945; 
 }
 
 .edit-profile-button:hover {
-  background-color: #0056b3;
+  background-color: #001267;
 }
 
 .delete-button {
@@ -121,6 +131,14 @@ html[dir="ltr"] .user-details {
 
 .delete-button:hover {
   background-color: #5a6268;
+}
+
+.admin-register {
+  background-color: #4caf52; 
+}
+
+.admin-register:hover {
+  background-color: #388e3c;
 }
 
 .edit-profile-link {
@@ -132,7 +150,7 @@ html[dir="ltr"] .user-details {
   display: flex;
   justify-content: flex-start;
   flex-wrap: wrap;
-  gap: 10px;
+  gap: 12px;
 }
 
 @media (max-width: 600px) {
@@ -159,7 +177,8 @@ html[dir="ltr"] .user-details {
 
   .logout-button,
   .edit-profile-button,
-  .delete-button {
+  .delete-button,
+  .admin-register {
     width: 100%;
     min-width: 160px;
     padding: 14px 0;

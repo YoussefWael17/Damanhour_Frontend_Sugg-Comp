@@ -15,6 +15,7 @@ import { AuthService } from '../../services/auth.service';
 })
 export class ProfileComponent {
   profileData: any = {};
+  isAdmin: boolean = false;
 
   constructor(private authService: AuthService , private router: Router) {}
 
@@ -23,11 +24,15 @@ export class ProfileComponent {
       next: (data) => {
         this.profileData = data;
         console.log('Profile:', this.profileData);
+        this.isAdmin = this.profileData.adjective === 'موظف إداري'
       },
       error: (err) => {
         console.error('Failed to load profile', err);
       }
     });
+
+
+    
   }
 
 

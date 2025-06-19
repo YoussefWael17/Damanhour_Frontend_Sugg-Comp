@@ -93,6 +93,11 @@
     font-family: "Cairo", sans-serif;
     transition: all 0.3s ease;
     margin: 0 8px;
+    
+}
+
+.statuss{
+    width: 100%;
 }
 
 .complaint-form input:focus,
@@ -187,6 +192,14 @@
     box-shadow: 0 6px 14px rgba(0, 0, 0, 0.2);
 }
 
+
+
+
+
+
+
+
+
 /* Responsive Design */
 @media (max-width: 992px) {
     .complaint-form {
@@ -206,6 +219,7 @@
     .log-button {
         padding: 15px 25px;
         font-size: 18px;
+        width: 100%;
     }
 }
 
@@ -227,6 +241,7 @@
     .log-button {
         padding: 12px 20px;
         font-size: 16px;
+        width: 100%;
     }
 }
 
@@ -245,5 +260,6 @@
     .log-button {
         font-size: 15px;
         padding: 10px 18px;
+        width: 100%;
     }
 }

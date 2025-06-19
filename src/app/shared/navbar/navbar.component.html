@@ -7,9 +7,7 @@
     <ul>
       <ng-container *ngIf="isHomePage(); else notHome">
         <li><a routerLink="/login">{{ 'navbar.login' | translate }}</a></li>
-        <li><a routerLink="/register">{{ 'navbar.register' | translate }}</a></li>
-        <li><a routerLink="/admin">{{ 'navbar.admin' | translate }}</a></li>
-        
+        <li><a routerLink="/register">{{ 'navbar.register' | translate }}</a></li>  
       </ng-container>
 
       <ng-template #notHome>
