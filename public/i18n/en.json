@@ -195,6 +195,42 @@
   "end_reg": "Register Admin",
   "notice": "An error occurred during registration. Please try again.",
   "question": "Already have an account? Login"
-}
+},
+
+
+"all-sugg-comp": {
+    "FILTER": {
+      "ALL": "All"
+    },
+    "SUGGESTIONS": {
+      "ATTACHMENTS": "Attachments",
+      "VIEW_ATTACHMENT": "View Attachment",
+      "NO_DATA": "No suggestions available at the moment"
+    },
+    "TIP": {
+      "MESSAGE": "Share your ideas... your suggestion might make a difference!"
+    },
+    "STATUS": {
+      "معلق": "Pending",
+      "تم الحل": "Resolved",
+      "قيد التنفيذ": "In Progress",
+      "مرفوض": "Rejected"
+    },
+    "REACTIONS": {
+      "LIKE": "Like",
+      "DISLIKE": "Dislike"
+    },
+    "USER": {
+      "USERNAME": "Username",
+      "FACULTY": "Faculty"
+    },
+    "SECTORS": {
+    "EDUCATION_AND_STUDENTS": "Education and Student Affairs",
+    "COMMUNITY_SERVICE": "Community Service and Environmental Development",
+    "GRADUATE_STUDIES": "Graduate Studies",
+    "UNIVERSITY_SECRETARY": "University Secretary Sector",
+    "UNIVERSITY_MANAGEMENT": "University Management Sector"
+  }
+  }
 
 }

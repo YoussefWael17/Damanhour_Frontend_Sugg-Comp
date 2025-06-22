@@ -86,3 +86,10 @@ button[type="submit"]:hover:not(:disabled) {
     font-size: 24px;
   }
 }
+
+.profile-image-preview {
+  max-width: 200px;  /* الحد الأقصى للعرض */
+  max-height: 200px; /* الحد الأقصى للارتفاع */
+  object-fit: cover; /* يضمن تغطية الصورة داخل الصندوق مع الحفاظ على النسبة */
+  border-radius: 8px; /* لو عايز شكل مدور أو حواف مدورة */
+}

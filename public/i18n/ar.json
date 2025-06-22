@@ -190,7 +190,31 @@
   "end_reg": "تسجيل المسؤول",
   "notice": "حدث خطأ أثناء التسجيل. حاول مرة أخرى.",
   "question": "لديك حساب؟ تسجيل الدخول"
+},
+
+"all-sugg-comp":{
+  "FILTER": {
+    "ALL": "الكل"
+  },
+  "SUGGESTIONS": {
+    "ATTACHMENTS": "المرفقات",
+    "VIEW_ATTACHMENT": "عرض المرفق",
+    "NO_DATA": "لا توجد اقتراحات متاحة حاليًا"
+  },
+  "TIP": {
+    "MESSAGE": "شاركنا أفكارك... اقتراحك قد يحدث فرقاً!"
+  },
+   "SECTORS": {
+    "EDUCATION_AND_STUDENTS": "قطاع شئون التعليم والطلاب",
+    "COMMUNITY_SERVICE": "قطاع شئون خدمة المجتمع وتنمية البيئة",
+    "GRADUATE_STUDIES": "قطاع الدراسات العليا",
+    "UNIVERSITY_SECRETARY": "قطاع امين عام الجامعه",
+    "UNIVERSITY_MANAGEMENT": "قطاع ادارة الجامعه"
+  
 }
 
 
+
+
+}
 }

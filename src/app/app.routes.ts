@@ -16,6 +16,7 @@ import { SpecificComplaintComponent } from './pages/specific-complaint/specific-
 import { VerifyOtpComponent } from './pages/verify-otp/verify-otp.component';
 import { ResetPasswordComponent } from './pages/reset-password/reset-password.component';
 import { AdminComponent } from './pages/admin/admin.component'
+import { AllCompsSuggsComponent } from './pages/all-comps-suggs/all-comps-suggs.component';
 
 export const routes: Routes = [
   {
@@ -25,9 +26,11 @@ export const routes: Routes = [
       { path: '', component: HomeComponent },
       { path: 'submit-complaint', component: SubmitComplaintComponent },
       { path: 'profile', component: ProfileComponent, canActivate: [AuthGuard] },
-      { path: 'profile/edit', component: EditProfileComponent },
-      { path: 'complaint/details/:id/:sc_type', component: SpecificComplaintComponent },
-      { path: 'complaint/edit/:id/:sc_type', component: EditComplaintComponent },
+      { path: 'profile/edit', component: EditProfileComponent, canActivate: [AuthGuard] },
+      { path: 'complaint/details/:id/:sc_type', component: SpecificComplaintComponent, canActivate: [AuthGuard] },
+      { path: 'complaint/edit/:id/:sc_type', component: EditComplaintComponent, canActivate: [AuthGuard] },
+      { path: 'all-sugg-comp', component:AllCompsSuggsComponent, canActivate: [AuthGuard] }
+
     ]
   },
   { path: 'register', component: RegisterComponent },
@@ -38,7 +41,7 @@ export const routes: Routes = [
   { path: 'verify-otp', component: VerifyOtpComponent },
   { path: 'reset-password', component:ResetPasswordComponent},
   { path: 'admin', component:AdminComponent},
-
+  // { path: 'all-sugg-comp', component:AllCompsSuggsComponent}
 ];
 
 

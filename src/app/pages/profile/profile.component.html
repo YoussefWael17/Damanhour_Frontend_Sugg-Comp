@@ -1,7 +1,8 @@
 <div class="profile container">
   <div class="profile-header" *ngIf="profileData">
       <div *ngIf="profileData.profile_image">
-        <img [src]="profileData.profile_image" alt="Profile Image" class="profile-image" />
+        <img [src]="'https://damanhourappproject-production.up.railway.app' + profileData.profile_image" alt="Profile Image" class="profile-image"/>
+
       </div>
     <div class="profile-info">
       <h2 class="name">{{ profileData.username }}</h2>

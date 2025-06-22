@@ -22,6 +22,9 @@ export class EditComplaintComponent implements OnInit {
   formMessage = '';
   isLoading = false;
   id!: number;
+  sc_type: string = 'اقتراح';
+  errorMessage = '';
+  suggestion: any;
 
   constructor(
     private fb: FormBuilder,
@@ -31,34 +34,47 @@ export class EditComplaintComponent implements OnInit {
   ) {}
 
   ngOnInit(): void {
-  this.complaintForm = this.fb.group({
-    title: ['', Validators.required],
-    sector: ['', Validators.required],
-    description: ['', Validators.required],
-    sc_type: ['', Validators.required],
-    attachments: [null]
-  });
+    this.complaintForm = this.fb.group({
+      title: ['', Validators.required],
+      sector: ['', Validators.required],
+      description: ['', Validators.required],
+      sc_type: [{ value: '', disabled: true }, Validators.required],
+      attachments: [null]
+    });
 
-  this.route.params.subscribe(params => {
-    this.id = +params['id']; 
-    const sc_type = params['type'];
-    this.loadComplaint(this.id, sc_type);
-  });
-}
+    this.route.params.subscribe(params => {
+      this.id = Number(params['id']);
+      this.sc_type = params['sc_type'] || 'اقتراح';
+      this.loadSuggestion(this.id, this.sc_type);
+    });
+  }
+
+  loadSuggestion(id: number, sc_type: string) {
+    this.authService.getSuggestionById(id, sc_type).subscribe({
+      next: (data) => {
+        this.suggestion = data;
+
+        const suggestionData = data as any;
+
+        this.complaintForm.patchValue({
+          title: suggestionData.title,
+          sector: suggestionData.sector,
+          description: suggestionData.description
+        });
+
+        this.complaintForm.get('sc_type')?.setValue(suggestionData.sc_type);
+        this.isLoading = false;
+      },
+      error: (err) => {
+        this.errorMessage = 'فشل تحميل التفاصيل.';
+        console.error(err);
+        this.isLoading = false;
+      }
+    });
+  }
 
   get f() {
     return this.complaintForm.controls;
-  }
-
-  loadComplaint(id: number, sc_type: string) {
-    this.authService.getSuggestionById(id, sc_type).subscribe({
-      next: (data) => {
-        this.complaintForm.patchValue(data);
-      },
-      error: (err) => {
-        console.error('فشل في تحميل البيانات:', err);
-      }
-    });
   }
 
   onComplaintFileSelected(event: any) {
@@ -79,15 +95,15 @@ export class EditComplaintComponent implements OnInit {
       formData.append('title', formValues.title);
       formData.append('sector', formValues.sector);
       formData.append('description', formValues.description);
-      formData.append('sc_type', formValues.sc_type);
+      formData.append('sc_type', this.sc_type); // استخدمنا المتغير مباشرة لأن الفورم كنترول معطل
 
       if (this.selectedFile) {
         formData.append('attachments', this.selectedFile);
       }
 
-      this.authService.updateSuggestion(this.id, formData, formValues.sc_type).subscribe({
+      this.authService.updateSuggestion(this.id, formData, this.sc_type).subscribe({
         next: () => {
-          this.formMessage = `تم تحديث ${formValues.sc_type} بنجاح`;
+          this.formMessage = `تم تحديث ${this.sc_type} بنجاح`;
           this.isLoading = false;
           this.router.navigate(['/profile']);
         },

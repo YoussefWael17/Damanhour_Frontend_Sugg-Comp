@@ -1,0 +1,105 @@
+<div class="suggs-wrapper" [attr.dir]="direction">
+  <div class="layout-grid">
+    
+    <!-- RIGHT COLUMN: FILTERS -->
+    <div class="side-column filters">
+      <ul>
+        <li (click)="selectedSector = 'all'" [class.active]="selectedSector === 'all'">
+          {{ 'all-sugg-comp.FILTER.ALL' | translate }}
+        </li>
+        <li *ngFor="let sec of sectors"
+            (click)="selectedSector = sec"
+            [class.active]="selectedSector === sec">
+          <ng-container *ngIf="sec === 'قطاع شئون التعليم والطلاب'">{{ 'all-sugg-comp.SECTORS.EDUCATION_AND_STUDENTS' | translate }}</ng-container>
+          <ng-container *ngIf="sec === 'قطاع شئون خدمة المجتمع وتنمية البيئة'">{{ 'all-sugg-comp.SECTORS.COMMUNITY_SERVICE' | translate }}</ng-container>
+          <ng-container *ngIf="sec === 'قطاع الدراسات العليا'">{{ 'all-sugg-comp.SECTORS.GRADUATE_STUDIES' | translate }}</ng-container>
+          <ng-container *ngIf="sec === 'قطاع امين عام الجامعه'">{{ 'all-sugg-comp.SECTORS.UNIVERSITY_SECRETARY' | translate }}</ng-container>
+          <ng-container *ngIf="sec === 'قطاع ادارة الجامعه'">{{ 'all-sugg-comp.SECTORS.UNIVERSITY_MANAGEMENT' | translate }}</ng-container>
+
+          <ng-container *ngIf="
+            sec !== 'قطاع شئون التعليم والطلاب' &&
+            sec !== 'قطاع شئون خدمة المجتمع وتنمية البيئة' &&
+            sec !== 'قطاع الدراسات العليا' &&
+            sec !== 'قطاع امين عام الجامعه' &&
+            sec !== 'قطاع ادارة الجامعه'">
+            {{ sec }}
+          </ng-container>
+        </li>
+      </ul>
+    </div>
+
+    <!-- CENTER COLUMN: SUGGESTIONS -->
+    <div class="main-column">
+      <ng-container *ngIf="response.data?.length > 0; else noData">
+        <div class="sugg-card" *ngFor="let sugg of filteredData()">
+          <div class="user-info">
+
+            <img [src]="sugg.user?.profile_image || 'جامعة_دمنهور.png'" alt="profile" class="profile-img" />
+       
+                    <!-- <img [src]="'https://damanhourappproject-production.up.railway.app' + sugg.user?.profile_image || 'جامعة_دمنهور.png'"  alt="Profile Image" class="profile-img"/> -->
+
+            <div class="user-details">
+              <p class="username">{{ sugg.user?.username }}</p>
+              <p class="faculty">{{ sugg.user?.faculty }}</p>
+            </div>
+
+            <div class="status-box" [ngClass]="{
+              'pending': sugg.status === 'معلق',
+              'resolved': sugg.status === 'تم الحل',
+              'in-progress': sugg.status === 'قيد التنفيذ',
+              'rejected': sugg.status === 'مرفوض'
+            }">
+              <span class="status-icon" [title]="getStatusTooltip(sugg.status)">
+                <i *ngIf="sugg.status === 'معلق'" class="fas fa-hourglass-half"></i>
+                <i *ngIf="sugg.status === 'تم الحل'" class="fas fa-check-circle"></i>
+                <i *ngIf="sugg.status === 'قيد التنفيذ'" class="fas fa-tools"></i>
+                <i *ngIf="sugg.status === 'مرفوض'" class="fas fa-times-circle"></i>
+              </span>
+              <!-- ترجمة حالة الاقتراح -->
+              <span class="status-text">{{ ('all-sugg-comp.STATUS.' + sugg.status) | translate }}</span>
+            </div>
+
+          </div>
+
+          <!-- الوصف -->
+          <p class="centered-text">
+            <strong>{{ sugg.description }}</strong>
+          </p>
+
+          <!-- المرفقات -->
+          <div class="centered-text" *ngIf="sugg.attachments">
+            <strong>{{ 'all-sugg-comp.SUGGESTIONS.ATTACHMENTS' | translate }}:</strong><br>
+            <a [href]="sugg.attachments" target="_blank">{{ 'all-sugg-comp.SUGGESTIONS.VIEW_ATTACHMENT' | translate }}</a>
+          </div>
+
+          <div class="reaction-box">
+            <span class="like">👍 {{ sugg.like_count }} {{ 'all-sugg-comp.REACTIONS.LIKE' | translate }}</span>
+            <span class="dislike">👎 {{ sugg.dislike_count }} {{ 'all-sugg-comp.REACTIONS.DISLIKE' | translate }}</span>
+          </div>
+        </div>
+      </ng-container>
+
+      <ng-template #noData>
+        <p class="no-data">{{ 'all-sugg-comp.SUGGESTIONS.NO_DATA' | translate }}</p>
+      </ng-template>
+    </div>
+
+    <!-- LEFT COLUMN: TIP + IMAGE SLIDER -->
+    <div class="side-column tip">
+    <p class="tip-message">💡 {{ 'all-sugg-comp.TIP.MESSAGE' | translate }}</p>
+
+    <div class="slider-container">
+      <div class="slider-images" [style.transform]="'translateX(-' + currentSlide * 100 + '%)'">
+        <img src="edwin-andrade-4V1dC_eoCwg-unsplash.jpg" alt="slide1" />
+        <img src="جامعة_دمنهور.png" alt="slide2" />
+        <img src="جامعة_دمنهور.png" alt="slide3" />
+      </div>
+
+      <button class="prev-btn" (click)="prevSlide()">&#10094;</button>
+      <button class="next-btn" (click)="nextSlide()">&#10095;</button>
+    </div>
+  </div>
+
+
+  </div>
+</div>

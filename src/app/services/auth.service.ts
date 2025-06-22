@@ -203,6 +203,17 @@ deleteSuggestion(id: number, sc_type: string) {
 }
 
 
+getAllSuggsComps() {
+  const token = localStorage.getItem('auth_token');
+  const headers = new HttpHeaders({
+    Authorization: `Bearer ${token}`
+  });
+
+  let endpoint = 'feedback/';
+
+  return this.http.get(`${this.apiUrl}${endpoint}`, { headers });
+}
+
   // التحقق من حالة التسجيل
   isLoggedIn(): boolean {
     return !!localStorage.getItem('auth_token');

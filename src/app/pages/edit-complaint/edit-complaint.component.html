@@ -37,11 +37,12 @@
 
     <!-- Type -->
     <label for="sc_type">{{ 'submit-complaint.type' | translate }}</label>
-    <select
+    <select 
       id="sc_type"
       formControlName="sc_type"
       [class.is-invalid]="submitted && f['sc_type'].invalid"
       class="form-control"
+      [disabled]="true" 
     >
       <option value="" disabled>{{ 'submit-complaint.enter_type' | translate }}</option>
       <option value="اقتراح">{{ 'submit-complaint.type1' | translate }}</option>
